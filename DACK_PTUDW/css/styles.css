@@ -1,0 +1,14 @@
+body {
+    overflow: hidden;
+}
+
+.container
+{
+    width: auto;
+    height: 305px;
+    overflow: hidden;
+    position: relative;
+    background: #e6e6e6;
+    border: 10px solid #FFF;
+    margin-top: 10px;
+}
