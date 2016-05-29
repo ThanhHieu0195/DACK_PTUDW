@@ -4,8 +4,19 @@ var app = angular.module('hidrobook', ['ui.bootstrap']);
 app.controller('controlerapp', function($scope, $http){
 	  $http.get('js/data.json')
         .success(function(data) {
-            $scope.a=data.name;
-        })
+            $scope.types=data.types;
+            $scope.books = data.books;
+
+             $scope.filterBookbyType = function(type){
+             	var books =[];
+             	angular.forEach($scope.books, function(value, key){
+				      if(value.type == type)
+				      	books.push(value);
+			   });
+      			return books;
+      		};
+        });
+
       
 });
 
@@ -17,7 +28,7 @@ app.controller('controlerapp', function($scope, $http){
 					$scope.slides = data.images;
 
 			  var slides = $scope.slides;
-			  console.log(slides);
+			  // console.log(slides);
 				})
 			// initializing the time Interval
 			

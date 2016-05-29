@@ -45,38 +45,14 @@
         <div id="contentmain" class="row">
             <!-- menu-left -->
             <div class="menucontent col-md-3">
-             <section>
-                  <h1>Sách phổ biến</h1>
-                  <ul class="list-group">
-                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
-                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
-                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
-                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
-                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
+             <section ng-repeat="type in types">
+                  <h1>{{type.name}}</h1>
+                  <ul class="list-group" >
+                      <li class="list-group-item" ng-repeat="book in filterBookbyType(type.name)"><a href="" ng-bind="book.name"></a></li>
                   </ul>
                 </section>
 
-                <section>
-                  <h1>Sách phổ biến</h1>
-                  <ul class="list-group">
-                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
-                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
-                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
-                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
-                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
-                  </ul>
-                </section>
-
-                <section>
-                  <h1>Sách phổ biến</h1>
-                  <ul class="list-group">
-                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
-                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
-                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
-                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
-                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
-                  </ul>
-                </section>
+               
               
             </div>
             <!-- Section -->

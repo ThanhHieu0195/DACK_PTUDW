@@ -8,9 +8,30 @@
 		 {"image": "https://lh3.googleusercontent.com/V64rxyiPUsbJ72tsP2G9GTY7QIsv_aIoo8YRZoM-sdniyC7xluUzYGVvwPZTId3xh7HZgvLAkwmVI9Md4pONZsZa_WZiRIAJuA_FGPcGpBq1M3xM8AiuVS095PGpLGM34p2mPN-fzVPr8rSBaorOMzev4Oq0wv-4T7Z215VHfrEWPirnnLtx7-xoBp5D0DgxTBm_FavhPgNmxVlIOMknWV3udbeBNo17HwIDb_J-gl0f4SQ3vR9GHzfi-krjoLuscXPT9dLzECcbH8hwAFsqedZSnYnwi77B_uzJoHPcTc7UhzDUuNg07s2-tEO55KRXlFlRjubhkIAqp0QMsazCc85yxfiA0Xp9TIj_TBu4mNhqpQ5EdvWZUGsJjXDnRD9Y1FcCkCGNMZrXSVoEQ3As0JxwJ94CGgpPf3S0FO26s1Spe_led1g7SMY7hpIU7X-pMQWbk4kHQ6PFt8o5hguHy0YTl-tmbquCDPxW8X0GIm6v2aWtrA7mC-btORf_yfb6H0DeVAiJ7xwIFcJ77wiXHT8YmuFxhV8PX_DlqSg0r0N_Yg2979p5Kcanw3AQp9aEGiKgF90k0oukJLIdsj5wOwFESrsFfuo=w648-h215-no", "description": "Image 05"}
 	],
 	"books":[
-		{"id":"001","name":"OnePiece", "author":"oda", "type":"truyện tranh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"}
+		{"id":"001","name":"OnePiece", "author":"oda", "type":"truyện tranh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"001","name":"OnePiece", "author":"oda", "type":"truyện tranh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"001","name":"OnePiece", "author":"oda", "type":"truyện tranh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"001","name":"OnePiece", "author":"oda", "type":"truyện tranh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+
+		{"id":"002","name":"Giáo trình công nghệ thông tin", "author":"oda", "type":"Ebook", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"002","name":"Giáo trình công nghệ thông tin", "author":"oda", "type":"Ebook", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"002","name":"Giáo trình công nghệ thông tin", "author":"oda", "type":"Ebook", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"002","name":"Giáo trình công nghệ thông tin", "author":"oda", "type":"Ebook", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"002","name":"Giáo trình công nghệ thông tin", "author":"oda", "type":"Ebook", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+
+		{"id":"003","name":"Toeic 400", "author":"oda", "type":"sách tiếng anh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"003","name":"Toeic 400", "author":"oda", "type":"sách tiếng anh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"003","name":"Toeic 400", "author":"oda", "type":"sách tiếng anh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"003","name":"Toeic 400", "author":"oda", "type":"sách tiếng anh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"003","name":"Toeic 400", "author":"oda", "type":"sách tiếng anh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+
+		{"id":"004","name":"Tập Đọc Lớp 1", "author":"oda", "type":"sách tiếng việt", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"004","name":"Tập Đọc Lớp 1", "author":"oda", "type":"sách tiếng việt", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"004","name":"Tập Đọc Lớp 1", "author":"oda", "type":"sách tiếng việt", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"004","name":"Tập Đọc Lớp 1", "author":"oda", "type":"sách tiếng việt", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"004","name":"Tập Đọc Lớp 1", "author":"oda", "type":"sách tiếng việt", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"}
 	],
-	"types":[{"name":"văn học"},{"name":"truyện tranh"},{"name":"khoa học"}],
+	"types":[{"name":"sách tiếng anh"},{"name":"sách tiếng việt"},{"name":"truyện tranh"}, {"name":"Ebook"}],
 	"users":[
 		{
 			"user":"thanhhieu0195@gmail.com", 
