@@ -9,26 +9,128 @@
 
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"> </script>
+    
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"> </script>
+    <script src="js/js.js"></script>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 
     <script type="text/javascript" src="angular/angular.min.js"></script>
   </head>
   <body ng-app="hidrobook">
-	<!-- Banner=> dùng amimotion -->
-	<!-- end-Banner -->
+	   <div class="container" ng-controler="controler">
 
-	<!-- Header -->
-	<!-- end-Header -->
+        <!-- Header -->
+        <div id="header" class="container">
+            <div class="icon fl-left">
+                <a href=""><p>HidroBook</p></a>
+            </div>
+            <div class="menu fl-right">
+                <ul class="list-inline nav navbar-nav">
+                  <li class="active"><a href="#" >Home</a></li>
+                  <li><a href="#">Search</a></li>
+                  <li><a href="#">Books</a></li>
+                  <li><a href="#">Company</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- end-Header -->
 
-	<!-- Section -->
-	<!-- end-Section -->
+        <!-- content -->
+        <div id="contentmain" class="row">
+            <!-- menu-left -->
+            <div class="menucontent col-md-3">
+             <section>
+                  <h1>Sách phổ biến</h1>
+                  <ul class="list-group">
+                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
+                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
+                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
+                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
+                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
+                  </ul>
+                </section>
 
-	<!-- foother -->
-	<!-- end-foother -->
+                <section>
+                  <h1>Sách phổ biến</h1>
+                  <ul class="list-group">
+                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
+                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
+                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
+                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
+                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
+                  </ul>
+                </section>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+                <section>
+                  <h1>Sách phổ biến</h1>
+                  <ul class="list-group">
+                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
+                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
+                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
+                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
+                      <li class="list-group-item"><a href="">chuyện tình lẻ 1 đêm</a></li>
+                  </ul>
+                </section>
+              
+            </div>
+            <!-- Section -->
+            <div class="content col-md-8 col-md-push-1">
+                <section>
+                  	<div ng-controller="CarouselCtrl">
+  	                <div class="offsetspan6">
+  	                     <carousel interval="myInterval">
+  	                          <slide ng-repeat="slide in slides" active="slide.active">
+  	                                <img class="image-circle" ng-src="{{slide.image}}" style="margin:auto;"/>
+  	                        	 <div class="carousel-caption">
+  	                         	    <h4> {{slide.description}}</h4>
+  	                      		 </div>
+  	                      	 </slide>
+  	                   	</carousel>
+  	         	       </div>
+                    </div> 
+                </section>
+
+                <section>
+                	<h1>Chứa sản phẩm</h1>
+                </section>
+            </div>
+        </div>
+        <!-- end contet -->
+
+        <!-- footer -->
+       <div id="footer" class="row">
+            <div class="col-md-4">
+                <h1>Liên Hệ</h1>
+                <p>Create by: hidroteam</p>
+                <p>website: abc@xxx</p>
+                <p>website: abc@xxx</p>
+                <p>website: abc@xxx</p>
+            </div>
+            <div class="col-md-4">
+                <h1>Tag</h1>
+                <p>Create by: hidroteam</p>
+                <p>website: abc@xxx</p>
+                <p>website: abc@xxx</p>
+                <p>website: abc@xxx</p>
+            </div>
+            <div class="col-md-4">
+                <h1>Bla bla</h1>
+                <p>Create by: hidroteam</p>
+                <p>website: abc@xxx</p>
+                <p>website: abc@xxx</p>
+                <p>website: abc@xxx</p>
+            </div>
+        </div>
+        <!-- end-foother --> 
+     </div>
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
   </body>
