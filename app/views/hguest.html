@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/header.css">
+
+    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../../bower_components/angular/angular.min.js"></script>
+    <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../bower_components/firebase/firebase.js"></script>
+    <script src="../../bower_components/angularfire/dist/angularfire.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="../scripts/app.js"></script>
+</head>
+<body>
+    <div id="h-guest" ng-app="hidrobook">
+        <div class="container">
+            <!-- Header -->
+            <div id="header" class="row">
+                <div class="col-md-3 pull-left">
+                    <h1 id="logo"><a href="javascript:void(0)"><img src="../images/logo.png"></a></h1>
+                </div>
+
+                <div class="col-md-9">
+                    <img id="professor" src="../images/professor.png">
+                    <div class="pull-right" id="shop-cart">
+                        <a><img src="../images/shopcart.png">SHOPING: now in your cart 0 items</a>
+                    </div>
+                    <ul class="list-inline nav navbar" id="menu">
+                        <ul class="list-inline nav navbar-nav">
+                            <li class="active"><a href="#" >Home</a></li>
+                            <li><a href="#">Search</a></li>
+                            <li><a href="#">Books</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </ul>
+                    <div id="search" class="pull-right">
+                        <input id="keyword" type="text" name="txtsearch" placeholder="Nhập tên sách">
+                        <input type="button" class="btn btn-primary" value="Search">
+                    </div>
+                </div>
+            </div>
+            <!--Content -->
+            <div id="content" class="row">
+                <!-- category -->
+                <div id="v-menu" class="col-md-2">
+                    <div id="v-header" class="list-group-item"><h1>Danh Mục Sách</h1></div>
+                    <ul class="list-group">
+                        <li class="list-group-item">Sản phẩm mới</li>
+                        <li class="list-group-item">Sách bán chạy</li>
+                        <li class="list-group-item">Sách Kinh Tế</li>
+                        <li class="list-group-item">Sách Thiếu Nhi</li>
+                        <li class="list-group-item">Sách Phát Triển Bản Thân</li>
+                        <li class="list-group-item">Sách Văn Học - Tiểu Thuyết</li>
+                        <li class="list-group-item">Sách Truyện Thiếu Nhi</li>
+                        <li class="list-group-item">Truyện Tranh, Manga, Comic</li>
+                        <li class="list-group-item">Sách Kĩ Năng</li>
+                        <li class="list-group-item">Sách Học Ngoại Ngữ</li>
+                    </ul>
+                </div>
+                <!-- Slider and Book -->
+                <div id="book" class="col-md-10">
+                    <!--Slider -->
+                    <div id="slide" ng-controller="CarouselCtrl">
+                        <div>
+                            <carousel interval="myInterval">
+                                <slide ng-repeat="slide in slides" active="slide.active">
+                                    <img ng-src="{{slide.image}}">
+                                    <div class="carousel-caption">
+                                        <h4>Slide {{$index+1}}</h4>
+                                    </div>
+                                </slide>
+                            </carousel>
+                        </div>
+                    </div>
+                    <!-- New Product -->
+                    <div id="new-product">
+                        <h3>SẢN PHẨM MỚI</h3>
+                        <ul class="list-inline">
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div id="sale-product">
+                        <h3>SẢN PHẨM BÁN CHẠY</h3>
+                        <ul class="list-inline">
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div id="economic-book">
+                        <h3>SÁCH KINH TẾ</h3>
+                        <ul class="list-inline">
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div id="child-book">
+                        <h3>SÁCH THIẾU NHI</h3>
+                        <ul class="list-inline">
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div id="book-faculty">
+                        <h3>SÁCH CHUYÊN NGÀNH</h3>
+                        <ul class="list-inline">
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- footer -->
+            <div id="footer" class="row">
+
+            </div>
+            <!-- end-foother -->
+        </div>
+
+    </div>
+</body>
+</html>

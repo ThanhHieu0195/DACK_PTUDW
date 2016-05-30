@@ -1,0 +1,144 @@
+#h-guest{
+    background-color: #9d9d9d;
+    color: #000;
+}
+
+#h-guest #header #logo{
+    box-shadow: -15px 10px 10px #888888;
+    z-index: 10;
+}
+
+#h-guest #header #professor{
+    position: absolute;
+    margin-top: 65px;
+    margin-left: -75px;
+}
+
+#h-guest #header .col-md-9{
+    background-image: url("../images/bg-header.jpg");
+    background-repeat: no-repeat;
+}
+
+
+#h-guest #menu{
+    margin-top: 50px;
+    margin-left: 40px;
+    min-width: 700px;
+}
+
+#h-guest #menu a{
+    color: #000;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#h-guest #menu li:focus{
+    background: red;
+}
+
+#h-guest a:hover{
+    text-decoration: none;
+}
+
+#h-guest a:focus{
+    text-decoration: none;
+}
+
+#h-guest #search{
+    margin-top: -20px;
+    padding: 9px;
+}
+
+#h-guest #keyword{
+    width: 180px;
+}
+
+#h-guest #header{
+    background-color: #e9e8e3;
+    margin-top: 20px;
+    font-size: 18px;
+    border-width: 1px;
+    box-shadow: 10px 10px 5px #888888;
+    min-width: 800px!important;
+}
+
+#h-guest #shop-cart{
+    margin-top: -5px;
+    background-image: url("../images/bg-shopcart.png");
+    height: 45px;
+    width: 260px;
+    font-size: 11px;
+}
+
+#h-guest #header .list-inline li{
+    padding-right: 30px;
+}
+
+#h-guest #content{
+    margin-top: 5px;
+}
+
+#h-guest #v-header{
+    margin-top: 10px;
+    background-color: #626060;
+}
+
+#h-guest #v-menu h1{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#h-guest .list-group li{
+    background-color: #f2f2f2!important;
+    text-align: center;
+}
+
+#h-guest .list-group li:hover{
+    background-color: #000!important;
+    color: #fff;
+}
+
+#h-guest .list-group li:focus{
+    background-color: #000!important;
+    color: #fff;
+}
+
+#h-guest #footer{
+    text-align: center;
+    color: #C5A9A9;
+    padding:50px 20px;
+    background: #626060;
+    position: static;
+}
+
+
+#h-guest #content #slide div{
+    height: 200px;
+}
+
+#h-guest #book{
+    background-color: #fff;
+    margin-top: 10px;
+}
+
+#h-guest #content img{
+    margin:auto;
+    width: 400px;
+}
+
+#h-guest #content #slide {
+    width: 400px;
+    left:50%;
+    top:20px;
+    margin: auto;
+    display: block;
+    padding-bottom: 30px;
+}
+
+#h-guest #book h3{
+    color: #626060;
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px #c4bebc solid;
+}

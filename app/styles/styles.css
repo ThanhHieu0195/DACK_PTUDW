@@ -1,0 +1,65 @@
+body{
+	background-image: url("../images/backgroundmain.jpg");
+	background-color: #9d9d9d;
+}
+	
+#header{
+	font-size: 18px;
+	background-color: #ffffff;
+  	width: 100%;
+	margin: 10px auto;
+	border-style: #C7BDBD;
+	border-width: 1px;
+	box-shadow: 10px 10px 5px #888888;
+	}
+#header .icon{
+	font-size: 70px;
+	background: #000000;
+	padding-left: 10px;
+	padding-right: 15px;
+	height: 120px;
+	text-shadow: 2px 2px 1px #BDBDBD, 4px 4px 2px #BDBDBD, 6px 6px 3px #BDBDBD, 8px 8px 4px #BDBDBD;
+}
+
+#header .icon a{color:#ffffff; text-decoration:none;}
+#header .menu{padding-top:60px; padding-right: 20px; font-weight: bold; margin:1px 1px 1px 1px;}
+#header	.menu li>a{color:#000000; background-image: url("../images/backgroundmain.jpg");}
+#header	.menu li>a:hover{font-weight: normal; text-decoration: none; background: #000000; color:#ffffff; padding-top: 22px; font-size: 20px;}
+#header	.menu li>a:active{background: red;}
+#header	.menu li{width: 120px; text-align: center;}
+
+.fl-left{float: left;}
+.fl-right{float: right;}
+.fl-center{float: center;}
+
+/*style-content*/
+#contentmain{margin-top: 50px}
+
+.menucontent section{
+  	background: #ffffff;
+  	color: #000000;
+  	text-align: center;
+  	border: 1px solid black;
+  	margin: 0px 5px 20px 5px;
+}
+.menucontent section>h1{
+	font-size: 20px;
+	background: #000000;
+	color:#ffffff;
+  	padding: 10px 10px 10px 10px;
+  	margin: 0px 0px 0px 0px ;
+
+}
+
+#contentmain .content{
+	
+}
+
+/*style-footer*/
+#footer{
+	text-align: center;
+	color: #C5A9A9;
+	padding:50px 20px;
+	background: #000000;
+	position: static;
+}
