@@ -4,8 +4,8 @@ body {
 
 .container
 {
-    width: auto;
-    height: 305px;
+    width: 800px;
+    height: auto;
     overflow: hidden;
     position: relative;
     background: #e6e6e6;
