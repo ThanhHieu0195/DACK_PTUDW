@@ -48,12 +48,9 @@
              <section ng-repeat="type in types">
                   <h1>{{type.name}}</h1>
                   <ul class="list-group" >
-                      <li class="list-group-item" ng-repeat="book in filterBookbyType(type.name)"><a href="" ng-bind="book.name"></a></li>
+                      <li class="list-group-item" ng-repeat="book in filterBookbyType(type.symbol)"><a href="" ng-bind="book.name"></a></li>
                   </ul>
                 </section>
-
-               
-              
             </div>
             <!-- Section -->
             <div class="content col-md-8 col-md-push-1">
@@ -72,8 +69,16 @@
                     </div> 
                 </section>
 
-                <section>
-                	<h1>{{a}}</h1>
+                <section class="contentbookbytype">
+                  <div ng-repeat="type in types">
+                    <h1>{{type.name}}</h1>
+                    <div class="row" ng-init="books=filterBookbyType(type.symbol)" >
+                        <div class="col-md-4"><h5>Sách mới</h5><a href="" ng-init="booknew=filterbook(books, 'new', 0)" ng-bind="booknew.name"></a></div>
+                        <div class="col-md-4"><h5>Sách bán chạy</h5><a href="" ng-init="bookmax=filterbook(books, 'max', 0)" ng-bind="bookmax.name"></a></div>
+                        <div class="col-md-4"><h5>Sách phổ biến</h5><a href="" ng-init="bookorther=filterbook(books, 'orther', 0)" ng-bind="bookorther.name"></a></div>
+                        
+                    </div>
+                  </div>
                 </section>
             </div>
         </div>

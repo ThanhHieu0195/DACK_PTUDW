@@ -8,30 +8,39 @@
 		 {"image": "https://lh3.googleusercontent.com/V64rxyiPUsbJ72tsP2G9GTY7QIsv_aIoo8YRZoM-sdniyC7xluUzYGVvwPZTId3xh7HZgvLAkwmVI9Md4pONZsZa_WZiRIAJuA_FGPcGpBq1M3xM8AiuVS095PGpLGM34p2mPN-fzVPr8rSBaorOMzev4Oq0wv-4T7Z215VHfrEWPirnnLtx7-xoBp5D0DgxTBm_FavhPgNmxVlIOMknWV3udbeBNo17HwIDb_J-gl0f4SQ3vR9GHzfi-krjoLuscXPT9dLzECcbH8hwAFsqedZSnYnwi77B_uzJoHPcTc7UhzDUuNg07s2-tEO55KRXlFlRjubhkIAqp0QMsazCc85yxfiA0Xp9TIj_TBu4mNhqpQ5EdvWZUGsJjXDnRD9Y1FcCkCGNMZrXSVoEQ3As0JxwJ94CGgpPf3S0FO26s1Spe_led1g7SMY7hpIU7X-pMQWbk4kHQ6PFt8o5hguHy0YTl-tmbquCDPxW8X0GIm6v2aWtrA7mC-btORf_yfb6H0DeVAiJ7xwIFcJ77wiXHT8YmuFxhV8PX_DlqSg0r0N_Yg2979p5Kcanw3AQp9aEGiKgF90k0oukJLIdsj5wOwFESrsFfuo=w648-h215-no", "description": "Image 05"}
 	],
 	"books":[
-		{"id":"001","name":"OnePiece", "author":"oda", "type":"truyện tranh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"001","name":"OnePiece", "author":"oda", "type":"truyện tranh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"001","name":"OnePiece", "author":"oda", "type":"truyện tranh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"001","name":"OnePiece", "author":"oda", "type":"truyện tranh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"0","name":"Chúa sẽ phù hộ em 1", "author":"", "type":"VH_TT","date":"31/5/2016","number":"2","star":"5", "company":"","cost":"20$", "content":""},
+		{"id":"1","name":"Chúa sẽ phù hộ em 2", "author":"", "type":"VH_TT","date":"1/4/2016","number":"1","star":"4", "company":"","cost":"20$", "content":""},
+		{"id":"2","name":"Chúa sẽ phù hộ em 3", "author":"", "type":"VH_TT","date":"1/4/2016","number":"3","star":"3", "company":"","cost":"20$", "content":""},
+		{"id":"3","name":"Chúa sẽ phù hộ em 4", "author":"", "type":"VH_TT","date":"1/4/2016","number":"10","star":"4", "company":"","cost":"20$", "content":""},
+		{"id":"4","name":"Chúa sẽ phù hộ em 5", "author":"", "type":"VH_TT","date":"1/4/2016","number":"10","star":"4", "company":"","cost":"20$", "content":""},
+		{"id":"5","name":"Chúa sẽ phù hộ em 6", "author":"", "type":"VH_TT","date":"1/4/2016","number":"10","star":"4", "company":"","cost":"20$", "content":""},
+	
+		{"id":"6","name":"Trò chơi quyền lục tại nơi làm việc", "author":"", "type":"KT","date":"31/5/2016","number":"1","star":"", "company":"","cost":"", "content":""},
+		{"id":"7","name":"Bí Mật Triệu Đô Trong Tay Bạn", "author":"", "type":"KT","date":"31/5/2016","number":"3","star":"", "company":"","cost":"", "content":""},
+		{"id":"8","name":"Mô Hình Phân Phối Và Bán Lẻ", "author":"", "type":"KT","date":"31/5/2016","number":"5","star":"", "company":"","cost":"", "content":""},
+		{"id":"9","name":"Chuyên Gia Được Trả Lương Cao", "author":"", "type":"KT","date":"31/5/2016","number":"10","star":"", "company":"","cost":"", "content":""},
 
-		{"id":"002","name":"Giáo trình công nghệ thông tin", "author":"oda", "type":"Ebook", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"002","name":"Giáo trình công nghệ thông tin", "author":"oda", "type":"Ebook", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"002","name":"Giáo trình công nghệ thông tin", "author":"oda", "type":"Ebook", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"002","name":"Giáo trình công nghệ thông tin", "author":"oda", "type":"Ebook", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"002","name":"Giáo trình công nghệ thông tin", "author":"oda", "type":"Ebook", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
 
-		{"id":"003","name":"Toeic 400", "author":"oda", "type":"sách tiếng anh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"003","name":"Toeic 400", "author":"oda", "type":"sách tiếng anh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"003","name":"Toeic 400", "author":"oda", "type":"sách tiếng anh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"003","name":"Toeic 400", "author":"oda", "type":"sách tiếng anh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"003","name":"Toeic 400", "author":"oda", "type":"sách tiếng anh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+		{"id":"","name":"", "author":"", "type":"","date":"","number":"","star":"", "company":"","cost":"", "content":""}
 
-		{"id":"004","name":"Tập Đọc Lớp 1", "author":"oda", "type":"sách tiếng việt", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"004","name":"Tập Đọc Lớp 1", "author":"oda", "type":"sách tiếng việt", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"004","name":"Tập Đọc Lớp 1", "author":"oda", "type":"sách tiếng việt", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"004","name":"Tập Đọc Lớp 1", "author":"oda", "type":"sách tiếng việt", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"004","name":"Tập Đọc Lớp 1", "author":"oda", "type":"sách tiếng việt", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"}
 	],
-	"types":[{"name":"sách tiếng anh"},{"name":"sách tiếng việt"},{"name":"truyện tranh"}, {"name":"Ebook"}],
+	"types":[
+		{
+			"name":"sách văn học - tiểu thuyết", 
+			"symbol":"VH_TT",
+			"content":""
+		},
+		{
+			"name":"sách kinh tế",
+			"symbol":"KT",
+			"content":""
+		},
+		{
+			"name":"sách chuyên ngành",
+			"symbol":"CN",
+			"content":""
+		}
+	],
 	"users":[
 		{
 			"user":"thanhhieu0195@gmail.com", 
