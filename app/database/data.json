@@ -7,31 +7,49 @@
 		 {"image": "https://lh3.googleusercontent.com/K6RFeb_L_mMrzAiGaPb003_111JtkuMETzmoR99mCQ56sV65eIQAYavXiITm8babMzabYRwT9AluR-Kduq6XVn_AIpQRNDzqp775HzKNeVTWmLVIsVh5uNsZLaLBHdUFLbhU9i82xh4BlSQTAwwgkEr9EJAhHeWoMqbIUGuy77guTVp1N9P3IixSM5FNm5Dod6qO4TrPtu_mMW5wrJYlrxANJMAnnikHF1Wd4OauYzfgTFu8HXrwJAI7AUGup1DsE7MnW26G5IGtpljPSBX3wvUiu7pL3y2CQjfxN7fzcZe-Z3sesvFuKi8YcAtby4pJnZk_PEJB_4htCxbxOFf7Qmu3_BOUw_K8T3A22dIV6nywGO11PekFh-7LCwHNFwmSk6gccAH3wmaY-YN28z9_9bl3bTVjUgdDFqcny4RF42CgO0HS_OR1gE-Qty8po4cNlBvsdFXxkn0Dtt-qLHywk6jeC6O6S8H5-2cQ7JrZtyodXkLd6qO7w_ubHCx3noDGScXOCBEvyO7E5nxG2zyah0XX6-lp_yjVDzeP-uI8Kj83DIs0b_1qK0DxRMwx_lVyl_tl0DC5wuuQTFhXAWWlCiAe5rS5m0A=w648-h215-no", "description": "Image 04"},
 		 {"image": "https://lh3.googleusercontent.com/V64rxyiPUsbJ72tsP2G9GTY7QIsv_aIoo8YRZoM-sdniyC7xluUzYGVvwPZTId3xh7HZgvLAkwmVI9Md4pONZsZa_WZiRIAJuA_FGPcGpBq1M3xM8AiuVS095PGpLGM34p2mPN-fzVPr8rSBaorOMzev4Oq0wv-4T7Z215VHfrEWPirnnLtx7-xoBp5D0DgxTBm_FavhPgNmxVlIOMknWV3udbeBNo17HwIDb_J-gl0f4SQ3vR9GHzfi-krjoLuscXPT9dLzECcbH8hwAFsqedZSnYnwi77B_uzJoHPcTc7UhzDUuNg07s2-tEO55KRXlFlRjubhkIAqp0QMsazCc85yxfiA0Xp9TIj_TBu4mNhqpQ5EdvWZUGsJjXDnRD9Y1FcCkCGNMZrXSVoEQ3As0JxwJ94CGgpPf3S0FO26s1Spe_led1g7SMY7hpIU7X-pMQWbk4kHQ6PFt8o5hguHy0YTl-tmbquCDPxW8X0GIm6v2aWtrA7mC-btORf_yfb6H0DeVAiJ7xwIFcJ77wiXHT8YmuFxhV8PX_DlqSg0r0N_Yg2979p5Kcanw3AQp9aEGiKgF90k0oukJLIdsj5wOwFESrsFfuo=w648-h215-no", "description": "Image 05"}
 	],
-	"books":[
-		{"id":"001","name":"OnePiece", "author":"oda", "type":"truyện tranh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"001","name":"OnePiece", "author":"oda", "type":"truyện tranh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"001","name":"OnePiece", "author":"oda", "type":"truyện tranh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"001","name":"OnePiece", "author":"oda", "type":"truyện tranh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
+	"books":
+	{
+		"VH":
+		{
+			"name":"Văn học và tiểu thuyết",
+			"data":[
+					{"id":"0","title":"Chúa sẽ phù hộ em 1", "author":"no name", "number":"16","date":"31/5/2016","rating":"****","cost":"83.000đ","image":"https://vcdn.tikicdn.com/cache/w232/media/catalog/product/0/2/024.u2377.d20160428.t155228.jpg"},
+					{"id":"1","title":"Chúa sẽ phù hộ em 2", "author":"no name", "number":"16","date":"31/5/2016","rating":"****","cost":"83.000đ","image":"https://vcdn.tikicdn.com/cache/w232/media/catalog/product/0/2/025.u2377.d20160428.t155441.jpg"},
+					{"id":"2","title":"Đọc \"Tôi\" Bên Bến Lạ", "author":"Đoàn Cẩm Thi", "number":"16","date":"1/6/2016","rating":"****","cost":"73.000đ","image":"https://vcdn.tikicdn.com/cache/w232/media/catalog/product/t/o/toi%20doc%20ben%20ben%20la.u335.d20160526.t152615.jpg"}
+				],
+			"next":null
+			
+		}, 
+		"KT":
+		{
+			"name":"Kinh tế",
+			"data":[
 
-		{"id":"002","name":"Giáo trình công nghệ thông tin", "author":"oda", "type":"Ebook", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"002","name":"Giáo trình công nghệ thông tin", "author":"oda", "type":"Ebook", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"002","name":"Giáo trình công nghệ thông tin", "author":"oda", "type":"Ebook", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"002","name":"Giáo trình công nghệ thông tin", "author":"oda", "type":"Ebook", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"002","name":"Giáo trình công nghệ thông tin", "author":"oda", "type":"Ebook", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-
-		{"id":"003","name":"Toeic 400", "author":"oda", "type":"sách tiếng anh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"003","name":"Toeic 400", "author":"oda", "type":"sách tiếng anh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"003","name":"Toeic 400", "author":"oda", "type":"sách tiếng anh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"003","name":"Toeic 400", "author":"oda", "type":"sách tiếng anh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"003","name":"Toeic 400", "author":"oda", "type":"sách tiếng anh", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-
-		{"id":"004","name":"Tập Đọc Lớp 1", "author":"oda", "type":"sách tiếng việt", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"004","name":"Tập Đọc Lớp 1", "author":"oda", "type":"sách tiếng việt", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"004","name":"Tập Đọc Lớp 1", "author":"oda", "type":"sách tiếng việt", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"004","name":"Tập Đọc Lớp 1", "author":"oda", "type":"sách tiếng việt", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"},
-		{"id":"004","name":"Tập Đọc Lớp 1", "author":"oda", "type":"sách tiếng việt", "company":"null","cost":"20$", "content":"là bộ truyện xxxx"}
+					{"id":"3","title":"Bí Mật Triệu Đô Trong Tay Bạn", "author":" Anthony Norvell ","number":"16","date":"31/5/2016","rating":"****","cost":"74.000đ","image":"https://vcdn.tikicdn.com/cache/w1200/media/catalog/product/b/i/bi-mat.u335.d20160527.t163844.jpg"},
+					{"id":"4","title":"Chuyên Gia Được Trả Lương Cao", "author":" Debbie Allen  ","number":"20","date":"31/5/2016","rating":"****","cost":"24.000đ","image":"https://vcdn.tikicdn.com/cache/w1200/media/catalog/product/c/h/chuyen-gia.u335.d20160527.t173613.jpg"},
+					{"id":"6","title":"Kinh Tế Học Hài Hước (Alphabooks)", "author":" nhóm tác giả","number":"20","date":"1/6/2016","rating":"****","cost":"82.000đ","image":"https://vcdn.tikicdn.com/cache/w1200/media/catalog/product/k/i/kinh-te-hoc-hai-huoc.u547.d20160525.t143220.jpg"}
+		
+			], 
+			"next":null
+			
+		},
+		"NN":
+		{
+			"name":"Ngoại ngữ",
+			"data":[
+			
+					{"id":"7","title":"Luyện Siêu Tư Duy Tiếng Anh Chuyên Đề: Từ Vựng - Ngữ Âm - Ngữ Pháp", "author":"Đại Lợi", "number":"30","date":"31/5/2016","rating":"****","cost":"187.000đ","image":"https://vcdn.tikicdn.com/cache/w1200/media/catalog/product/8/4/843466018298.u335.d20160524.t091936_1.jpg"},
+					{"id":"8","title":"Luyện Siêu Tư Duy Tiếng Anh Chuyên Đề: Đọc Hiểu - Viết Bài Luận - Giao Tiếp", "author":"Đại Lợi", "number":"30","date":"31/5/2016","rating":"****","cost":"134.000đ","image":"https://vcdn.tikicdn.com/cache/w1200/media/catalog/product/2/4/243279823144.u335.d20160524.t093237.jpg"},
+					{"id":"9","title":"Graded Grammar Exercises 1", "author":"Andy Cribb Lynn Sauve ", "number":"30","date":"1/6/2016","rating":"****","cost":"98.000đ","image":"http://tiki.vn/media/bookreader/212389/files/OEBPS/Images/img069.gif"}
+				],
+			"next":null
+		}
+	},
+	"types":[
+		{"key":"VH"},
+		{"key":"KT"},
+		{"key":"NN"}
 	],
-	"types":[{"name":"sách tiếng anh"},{"name":"sách tiếng việt"},{"name":"truyện tranh"}, {"name":"Ebook"}],
 	"users":[
 		{
 			"user":"thanhhieu0195@gmail.com", 

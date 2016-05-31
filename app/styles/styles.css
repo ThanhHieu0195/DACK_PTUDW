@@ -78,6 +78,10 @@
 	margin-top: 5px;
 }
 
+h3{
+	text-transform: uppercase;
+}
+
 #h-guest #v-header{
 	margin-top: 10px;
 	background-color: #626060;
@@ -110,9 +114,13 @@
 }
 
 #h-guest #content #slide div{
-	height: 300px;
+	height: 200px;
+	width: 100%;
 }
-
+#h-guest #content #slide img{
+	height: 100%;
+	width: 100%;
+}
 #h-guest #book{
 	background-color: #fff;
 	margin-top: 10px;
