@@ -1,113 +1,560 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>HidroBook</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to H-Book</title>
 
-    <!-- Bootstrap -->
-    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
 
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"> </script>
-    
-    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"> </script>
-    <script src="scripts/js.js"></script>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-
-    <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
-  </head>
-  <body ng-app="hidrobook">
-	   <div class="container" ng-controller="controlerapp">
-
+    <script src="https://use.fontawesome.com/89763e860b.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/firebase/firebase.js"></script>
+    <script src="../bower_components/angularfire/dist/angularfire.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="scripts/app.js"></script>
+</head>
+<body>
+<div id="h-guest" data-ng-app="hidrobook">
+    <div class="container">
         <!-- Header -->
-        <div id="header" class="container">
-            <div class="icon fl-left">
-                <a href=""><p>HidroBook</p></a>
+        <div id="header" class="row">
+            <div class="col-md-3 pull-left">
+                <h1 id="logo"><a href="javascript:void(0)"><img src="images/logo.png"></a></h1>
             </div>
-            <div class="menu fl-right">
-                <ul class="list-inline nav navbar-nav">
-                  <li class="active"><a href="#" >Home</a></li>
-                  <li><a href="#">Search</a></li>
-                  <li><a href="#">Books</a></li>
-                  <li><a href="#">Company</a></li>
-                  <li><a href="#">Contact</a></li>
+
+            <div class="col-md-9">
+                <img id="professor" src="images/professor.png">
+                <div class="pull-right" id="shop-cart">
+                    <a><img src="images/shopcart.png">SHOPING: now in your cart 0 items</a>
+                </div>
+                <ul class="list-inline nav navbar" id="menu">
+                    <ul class="list-inline nav navbar-nav">
+                        <li class="active"><a href="#" >Home</a></li>
+                        <li><a href="#">Search</a></li>
+                        <li><a href="#">Books</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </ul>
+                <div id="search" class="pull-right">
+                    <input id="keyword" type="text" name="txtsearch" placeholder="Nhập tên sách">
+                    <input type="button" class="btn btn-primary" value="Search">
+                </div>
+            </div>
+        </div>
+        <!--Content -->
+        <div id="content" class="row">
+            <!-- category -->
+            <div id="v-menu" class="col-md-2">
+                <div id="v-header" class="list-group-item"><h1>Danh Mục Sách</h1></div>
+                <ul class="list-group">
+                    <li class="list-group-item">Sản phẩm mới</li>
+                    <li class="list-group-item">Sách bán chạy</li>
+                    <li class="list-group-item">Sách Kinh Tế</li>
+                    <li class="list-group-item">Sách Thiếu Nhi</li>
+                    <li class="list-group-item">Sách Phát Triển Bản Thân</li>
+                    <li class="list-group-item">Sách Văn Học - Tiểu Thuyết</li>
+                    <li class="list-group-item">Sách Truyện Thiếu Nhi</li>
+                    <li class="list-group-item">Truyện Tranh, Manga, Comic</li>
+                    <li class="list-group-item">Sách Kĩ Năng</li>
+                    <li class="list-group-item">Sách Học Ngoại Ngữ</li>
                 </ul>
             </div>
-        </div>
-        <!-- end-Header -->
-
-        <!-- content -->
-        <div id="contentmain" class="row">
-            <!-- menu-left -->
-            <div class="menucontent col-md-3">
-             <section ng-repeat="type in types">
-                  <h1>{{type.name}}</h1>
-                  <ul class="list-group" >
-                      <li class="list-group-item" ng-repeat="book in filterBookbyType(type.name)"><a href="" ng-bind="book.name"></a></li>
-                  </ul>
-                </section>
-
-               
-              
+            <!-- Slider and Book -->
+            <div id="book" class="col-md-10 pull-right">
+                <!--Slider -->
+                <div id="slide" data-ng-controller="CarouselCtrl">
+                    <div>
+                        <carousel interval="myInterval">
+                            <slide ng-repeat="slide in slides" active="slide.active">
+                                <img ng-src="{{slide.image}}">
+                                <div class="carousel-caption">
+                                    <h4>Slide {{$index+1}}</h4>
+                                </div>
+                            </slide>
+                        </carousel>
+                    </div>
+                </div>
+                <!-- New Product -->
+                <div id="new-product">
+                    <h3>SẢN PHẨM MỚI</h3>
+                    <ul class="list-inline">
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="sale-product">
+                    <h3>SẢN PHẨM BÁN CHẠY</h3>
+                    <ul class="list-inline">
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="economic-book">
+                    <h3>SÁCH KINH TẾ</h3>
+                    <ul class="list-inline">
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="child-book">
+                    <h3>SÁCH THIẾU NHI</h3>
+                    <ul class="list-inline">
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="book-faculty">
+                    <h3>SÁCH CHUYÊN NGÀNH</h3>
+                    <ul class="list-inline">
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="https://vcdn.tikicdn.com/cache/250x372/media/catalog/product/n/u/nuoc my nuoc my.u335.d20160428.t181355.jpg" title="Ý Tưởng Này Là Của Chúng Mình">
+                                        <h4 class="title">
+                                            <a  href="http://nhasachnguyenvancu.com/sach-kinh-te/marketing-ban-hang/y-tuong-nay-la-cua-chung-minh.html" title="Ý Tưởng Này Là Của Chúng Mình">Ý Tưởng Này Là Của Chúng Mình asdfasdfasdfasdfsadfasdfasdf</a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author">Huỳnh Vĩnh Sơn</p>
+                                <p class="rating">****</p>
+                                <div class="cost">70,000đ</div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <!-- Section -->
-            <div class="content col-md-8 col-md-push-1">
-                <section>
-                  	<div ng-controller="CarouselCtrl">
-  	                <div class="offsetspan6">
-  	                     <carousel interval="myInterval">
-  	                          <slide ng-repeat="slide in slides" active="slide.active">
-  	                                <img class="image-circle" ng-src="{{slide.image}}" style="margin:auto;"/>
-  	                        	 <div class="carousel-caption">
-  	                         	    <h4> {{slide.description}}</h4>
-  	                      		 </div>
-  	                      	 </slide>
-  	                   	</carousel>
-  	         	       </div>
-                    </div> 
-                </section>
-
-                <section>
-                	<h1>{{a}}</h1>
-                </section>
-            </div>
         </div>
-        <!-- end contet -->
-
         <!-- footer -->
-       <div id="footer" class="row">
+        <footer id="footer" class="row">
             <div class="col-md-4">
-                <h1>Liên Hệ</h1>
-                <p>Create by: hidroteam</p>
-                <p>website: abc@xxx</p>
-                <p>website: abc@xxx</p>
-                <p>website: abc@xxx</p>
+                <h3>Hidro <span>Team</span></h3>
+                <!--p class="footer-links">
+                    <a href="#">Home</a>
+                    ·
+                    <a href="#">Blog</a>
+                    ·
+                    <a href="#">Pricing</a>
+                    ·
+                    <a href="#">About</a>
+                    ·
+                    <a href="#">Faq</a>
+                    ·
+                    <a href="#">Contact</a>
+                </p>-->
+                <p class="footer-company-name">HidroTeam &copy; 2015</p>
             </div>
-            <div class="col-md-4">
-                <h1>Tag</h1>
-                <p>Create by: hidroteam</p>
-                <p>website: abc@xxx</p>
-                <p>website: abc@xxx</p>
-                <p>website: abc@xxx</p>
+            <div class="col-md-4 pull-left">
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>227 Nguyen Van Cu</span> HoChiMinh, VietNam</p>
+                </div>
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p>+84 972678420</p>
+                </div>
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a href="mailto:support@h2team.com">support@h2team.com</a></p>
+                </div>
             </div>
-            <div class="col-md-4">
-                <h1>Bla bla</h1>
-                <p>Create by: hidroteam</p>
-                <p>website: abc@xxx</p>
-                <p>website: abc@xxx</p>
-                <p>website: abc@xxx</p>
+            <div class="col-md-4 pull-right">
+                <p class="footer-company-about">
+                    <span>About the company</span>
+                    Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                </p>
+                <div class="footer-icons">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-github"></i></a>
+                </div>
             </div>
-        </div>
-        <!-- end-foother --> 
-     </div>
+        </footer>
+        <!-- end-foother -->
+    </div>
 
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  </body>
+</div>
+</body>
 </html>
