@@ -143,9 +143,8 @@
 	font-size: 100%;
 	vertical-align: baseline;
 	background: transparent;
-	width: 90%;
+	width: 200px;
 	display: block;
-	max-width: 200px;
 }
 
 .book-box:hover{
@@ -180,8 +179,7 @@
 }
 
 .book-box .img img{
-	max-width: 162px;
-	width: 100%;
+	width: 175px;
 }
 
 .book-box .author{
