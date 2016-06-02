@@ -6,7 +6,10 @@ app.controller('controlerapp', function($scope, $http){
         .success(function(data) {
             $scope.types=data.types;
             $scope.books = data.books;
-
+            $scope.issearchbook=false;
+            $scope.btnsearch=function(){
+                $scope.issearchbook=!$scope.issearchbook;
+            }
             // lọc ra danh sách sách dựa vào loaij
              $scope.filterBookbyType = function(books, type){
                 return books[type].data;
@@ -23,6 +26,7 @@ app.controller('controlerapp', function($scope, $http){
                 return listbooks;
             };
 
+           
             // lọc danh sách các theo điều kiện
             $scope.filterBookquery = function(listbooks, key){
                 var booksnew=[];

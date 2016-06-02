@@ -40,13 +40,40 @@
                     </ul>
                 </ul>
                 <div id="search" class="pull-right">
-                    <input id="keyword" type="text" name="txtsearch" placeholder="Nhập tên sách">
-                    <input type="button" class="btn btn-primary" value="Search">
+                    <input id="keyword" type="text" name="txtsearch" placeholder="Nhập tên sách" ng-model="searchbook" ng-readonly="!issearchbook">
+                    <input type="button" class="btn btn-primary" value="Search" ng-click="btnsearch()">
                 </div>
             </div>
         </div>
-        <!--Content -->
-        <div id="content" class="row">
+           <!-- chức năng search book -->
+              <div ng-show="issearchbook">
+                <h3>Kết quả search</h3>
+                <ul class="list-inline">
+                    <li ng-repeat="book in filterallBook(books)| filter:searchbook">
+                        <div class="book-box">
+                            <div class="img">
+                                <a href="#" title="Title-Book"><img src="{{book.image}}" title="{{book.title}}">
+                                    <h4 class="title">
+                                        <a  href="#" title="{{book.image}}" ng-bind="book.title"></a>
+                                    </h4>
+                                </a>
+                            </div>
+                            <p class="author" ng-bind="book.author"></p>
+                            <p class="rating" ng-bind="book.rating"></p>
+                            <div class="cost" ng-bind="book.cost"></div>
+                            <div class="btn-add">
+                                <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                    <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                    Thêm vào giỏ hàng
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        <!--nội dung Content -->
+        <div id="content" class="row" ng-show="!issearchbook">
             <!-- category -->
             <div id="v-menu" class="col-md-2">
                 <div id="v-header" class="list-group-item"><h1>Danh Mục Sách</h1></div>
@@ -78,6 +105,7 @@
                         </carousel>
                     </div>
                 </div>
+             
                 <!-- New Product -->
                 <div id="new-product">
                     <h3>SẢN PHẨM MỚI</h3>
