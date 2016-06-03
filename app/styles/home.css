@@ -1,5 +1,4 @@
 .book-box{
-    min-height: 130px;
     margin-bottom: 25px;
     padding-left: 10px;
     font-size: 100%;
@@ -42,6 +41,7 @@
 
 .book-box .img img{
     width: 175px;
+    height: 260px;
 }
 
 .book-box .author{
@@ -76,4 +76,12 @@
 
 .book-box:hover > .btn-add{
     visibility: visible;
+}
+
+#h-guest #book h3{
+    color: #626060;
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px #c4bebc solid;
 }

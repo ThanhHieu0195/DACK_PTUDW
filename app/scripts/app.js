@@ -1,8 +1,8 @@
 //angular.module('myApp', ['ui.bootstrap']);
-var app = angular.module('hidrobook', ['ui.bootstrap']);
+var app = angular.module('hidrobook', ['ui.bootstrap', 'ngRoute']);
 
 app.controller('controlerapp', function($scope, $http){
-      $http.get('database/data.json')
+    $http.get('database/data.json')
         .success(function(data) {
             $scope.types=data.types;
             $scope.books = data.books;
@@ -11,7 +11,7 @@ app.controller('controlerapp', function($scope, $http){
                 $scope.issearchbook=!$scope.issearchbook;
             }
             // lọc ra danh sách sách dựa vào loaij
-             $scope.filterBookbyType = function(books, type){
+            $scope.filterBookbyType = function(books, type){
                 return books[type].data;
             };
             // lọc tất cả các sách
@@ -20,13 +20,13 @@ app.controller('controlerapp', function($scope, $http){
                 angular.forEach(books, function(value, key){
                     listbooks.push.apply(listbooks, value.data);
                     if(value.next!=null){
-                         listbooks.push.apply(listbooks, $scope.filterallBook(value.next));
+                        listbooks.push.apply(listbooks, $scope.filterallBook(value.next));
                     }
                 });
                 return listbooks;
             };
 
-           
+
             // lọc danh sách các theo điều kiện
             $scope.filterBookquery = function(listbooks, key){
                 var booksnew=[];
@@ -48,7 +48,7 @@ app.controller('controlerapp', function($scope, $http){
                                 knew=kfe;
                             }
 
-                         });
+                        });
                         break;
                     case 'max':
                         var kmax = listbooks[0].number;
@@ -65,34 +65,50 @@ app.controller('controlerapp', function($scope, $http){
                                 kmax=keynumber;
                             }
 
-                         });
+                        });
                         break;
                     default:
                         booksnew=listbooks;
-                    
+
 
                 }
-              
+
                 return booksnew;
-            };        
+            };
 
         });
 
-      
+
 });
 
- app.controller('CarouselCtrl', function($scope, $http) {
-            $http.get('database/data.json')
-                .success(function(data) {
-                     $scope.myInterval = 4000;
-                    // Initializing  slide rray  
-                    $scope.slides = data.images;
+app.controller('CarouselCtrl', function($scope, $http) {
+    $http.get('database/data.json')
+        .success(function(data) {
+            $scope.myInterval = 4000;
+            // Initializing  slide rray
+            $scope.slides = data.images;
 
-              var slides = $scope.slides;
-              // console.log(slides);
-                })
-            // initializing the time Interval
-            
-        });
+            var slides = $scope.slides;
+            // console.log(slides);
+        })
+    // initializing the time Interval
+
+});
 // Controller  for Carousel
- // Controller Ends here
+// Controller Ends here
+
+
+app.config(["$routeProvider", function($routeProvider) {
+    $routeProvider.when("/home", {
+        templateUrl: "views/home.html", //accessing a certain html page that was created within views
+    }).when("/book-detail", {
+        // the rest is the same for ui-router and ngRoute...
+        templateUrl: "views/book-detail.html",
+    }).when("/admin", {
+        templateUrl: "views/admin.html",
+    }).when("/checkout/cart", {
+        templateUrl: "views/checkout-cart.html",
+    }).otherwise({
+        redirectTo: '/home'
+    });
+}]);
