@@ -1,0 +1,27 @@
+{
+  "name": "bookstore",
+  "description": "website",
+  "main": "",
+  "keywords": [
+    "book"
+  ],
+  "authors": [
+    "hidroteam"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.6",
+    "bootstrap": "^3.3.6",
+    "angularfire": "^1.2.0",
+    "firebase": "^3.0.3"
+  }
+}
