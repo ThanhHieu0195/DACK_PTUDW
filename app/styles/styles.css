@@ -1,11 +1,6 @@
-.row{
-	margin: 0px!important;
-}
-
 #h-guest{
 	background-color: #9d9d9d;
 	color: #000;
-	padding-top: 10px;
 }
 
 #h-guest #header #logo{
@@ -79,28 +74,12 @@
 	padding-right: 30px;
 }
 
-#h-guest #search-container{
-	background-color: #fff;
-	margin:0px -15px ;
-	padding-left: 10px;
-	padding-bottom: 10px;
-}
-
-
 #h-guest #content{
 	margin-top: 5px;
 }
 
 h3{
 	text-transform: uppercase;
-}
-
-#h-guest #search-container h3{
-	padding: 20px 20px 10px 20px;
-	color: #626060;
-	font-size: 18px;
-	font-weight: bold;
-	border-bottom: 1px #c4bebc solid;
 }
 
 #h-guest #v-header{
@@ -135,6 +114,7 @@ h3{
 }
 
 #h-guest #content #slide div{
+	height: 200px;
 	width: 100%;
 }
 #h-guest #content #slide img{
@@ -148,7 +128,7 @@ h3{
 
 
 #h-guest #content #slide {
-	max-width: 900px;
+	width: 900px;
 	left:50%;
 	top:20px;
 	margin: 5px auto;
@@ -156,6 +136,93 @@ h3{
 	padding-bottom: 30px;
 }
 
+#h-guest #book h3{
+	color: #626060;
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 10px;
+	border-bottom: 1px #c4bebc solid;
+}
+
+.book-box{
+	min-height: 130px;
+	margin-bottom: 25px;
+	padding-left: 10px;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	width: 200px;
+	display: block;
+}
+
+.book-box:hover{
+	box-shadow: 0px 0px 4px #999;
+	transition: all 0.5s ease 0s;
+}
+
+.book-box a{
+	color: #333;
+	font-size: 13px;
+	text-overflow: ellipsis;
+	text-align: left;
+	line-height: 18px;
+	font-weight: bold;
+	width: 80%;
+}
+
+.book-box p{
+	margin: 0 !important;
+}
+
+.book-box .title{
+	margin: 0px;
+	height: 36px;
+}
+
+.book-box .img {
+	margin: auto;
+	overflow: hidden;
+	padding-right: 10px;
+	padding-top: 10px;
+}
+
+.book-box .img img{
+	width: 175px;
+}
+
+.book-box .author{
+	font-size: 11px;
+	color: #777;
+	padding-top: 3px;
+	text-align: left;
+}
+
+.book-box .cost{
+	font-size: 14px;
+	color: #444;
+	font-weight: 700;
+	text-align: left;
+}
+
+.book-box .add-to-cart{
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+.book-box .add-to-cart img{
+	height: 14px;
+	width: 18px;
+}
+
+.book-box .btn-add{
+	padding-right: 10px;
+	padding-bottom: 5px;
+	visibility: hidden;
+}
+
+.book-box:hover > .btn-add{
+	visibility: visible;
+}
 
 /*Footer*/
 
@@ -282,6 +349,26 @@ h3{
 
 	margin-right: 3px;
 	margin-bottom: 5px;
+}
+/*animotion*/
+@keyframes myChange {
+  from {
+      height: 100px;
+  } to {
+      height: 0;
+  }
+}
+
+.animotion-up-down li {
+    opacity: 1;
+}
+.animotion-up-down li.ng-enter {
+    -webkit-transition: 1s;
+    transition: 3s;
+    opacity: 0;
+}
+.animotion-up-down li.ng-enter-active {
+    opacity: 1;
 }
 
 /*search book*/

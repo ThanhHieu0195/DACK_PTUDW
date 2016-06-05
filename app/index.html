@@ -9,9 +9,25 @@
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/book-detail.css">
     <link rel="stylesheet" href="styles/checkout-cart.css">
-    <link rel="stylesheet" href="styles/home.css">
 
+    <script src="https://use.fontawesome.com/89763e860b.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/firebase/firebase.js"></script>
+    <script src="../bower_components/angularfire/dist/angularfire.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <!-- animotion -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
 
+    <!-- firebase -->
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
 </head>
 <body>
 <div id="h-guest" data-ng-app="hidrobook">
@@ -25,31 +41,31 @@
             <div class="col-md-9">
                 <img id="professor" src="images/professor.png">
                 <div class="pull-right" id="shop-cart">
-                    <a href="#checkout/cart"><img src="images/shopcart.png">SHOPING: now in your cart 0 items</a>
+                    <a><img src="images/shopcart.png">SHOPING: now in your cart 0 items</a>
                 </div>
                 <ul class="list-inline nav navbar" id="menu">
                     <ul class="list-inline nav navbar-nav">
-                        <li class="active"><a href="#home" >Home</a></li>
-                        <li><a href="#">Search</a></li>
+                        <li class="active"><a href="#" ng-click = "btnsearch(true)">Home</a></li>
+                        <li><a href="#" ng-click = "btnsearch(false)">Search</a></li>
                         <li><a href="#">Books</a></li>
                         <li><a href="#">Contact</a></li>
-                        <li><a href="#admin">Admin</a></li>
                     </ul>
                 </ul>
                 <div id="search" class="pull-right">
                     <input id="keyword" type="text" name="txtsearch" placeholder="Nhập tên sách" ng-model="searchbook">
-                    <input type="button" class="btn btn-primary" value="Search" ng-click="btnsearch()">
+                    <input type="button" class="btn btn-primary" value="Search">
                 </div>
             </div>
         </div>
+
            <!-- chức năng search book -->
-        <div id="search-container" class="row" ng-show="issearchbook">
-                <h3>Kết quả tìm kiếm</h3>
+              <div ng-show="issearchbook" class="animotion-up-down">
+                <h3>Kết quả search</h3>
                 <ul class="list-inline">
                     <li ng-repeat="book in filterallBook(books)| filter:searchbook">
                         <div class="book-box">
                             <div class="img">
-                                <a href="#" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
+                                <a href="#" title="Title-Book"><img src="{{book.image}}" title="{{book.title}}">
                                     <h4 class="title">
                                         <a  href="#" title="{{book.image}}" ng-bind="book.title"></a>
                                     </h4>
@@ -70,7 +86,117 @@
             </div>
 
         <!--nội dung Content -->
-        <div id="content" class="row" ng-show="!issearchbook" ng-view>
+        <div id="content" class="row" ng-show="!issearchbook">
+            <!-- category -->
+            <div id="v-menu" class="col-md-2">
+                <div id="v-header" class="list-group-item"><h1>Danh Mục Sách</h1></div>
+                <ul class="list-group">
+                    <li class="list-group-item">Sản phẩm mới</li>
+                    <li class="list-group-item">Sách bán chạy</li>
+                    <li class="list-group-item">Sách Kinh Tế</li>
+                    <li class="list-group-item">Sách Thiếu Nhi</li>
+                    <li class="list-group-item">Sách Phát Triển Bản Thân</li>
+                    <li class="list-group-item">Sách Văn Học - Tiểu Thuyết</li>
+                    <li class="list-group-item">Sách Truyện Thiếu Nhi</li>
+                    <li class="list-group-item">Truyện Tranh, Manga, Comic</li>
+                    <li class="list-group-item">Sách Kĩ Năng</li>
+                    <li class="list-group-item">Sách Học Ngoại Ngữ</li>
+                </ul>
+            </div>
+            <!-- Slider and Book -->
+            <div id="book" class="col-md-10 pull-right">
+                <!--Slider -->
+                <div id="slide" data-ng-controller="CarouselCtrl">
+                    <div>
+                        <carousel interval="myInterval">
+                            <slide ng-repeat="slide in slides" active="slide.active">
+                                <img ng-src="{{slide.image}}">
+                                <div class="carousel-caption">
+                                    <!-- <h4>Slide {{$index+1}}</h4> -->
+                                </div>
+                            </slide>
+                        </carousel>
+                    </div>
+                </div>
+             
+                <!-- New Product -->
+                <div id="new-product">
+                    <h3>SẢN PHẨM MỚI</h3>
+                    <ul class="list-inline">
+                        <li ng-repeat="book in filterBookquery(filterallBook(books), 'new')">
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="{{book.image}}" title="{{book.title}}">
+                                        <h4 class="title">
+                                            <a  href="#" title="{{book.image}}" ng-bind="book.title"></a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author" ng-bind="book.author"></p>
+                                <p class="rating" ng-bind="book.rating"></p>
+                                <div class="cost" ng-bind="book.cost"></div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="sale-product">
+                    <h3>SẢN PHẨM BÁN CHẠY</h3>
+                    <ul class="list-inline">
+                       <li ng-repeat="book in filterBookquery(filterallBook(books), 'max')">
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="{{book.image}}" title="{{book.title}}">
+                                        <h4 class="title">
+                                            <a  href="#" title="{{book.image}}" ng-bind="book.title"></a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author" ng-bind="book.author"></p>
+                                <p class="rating" ng-bind="book.rating"></p>
+                                <div class="cost" ng-bind="book.cost"></div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="{{type.key}}" ng-repeat="type in types">
+                    <h3 ng-bind="books[type.key].name"></h3>
+                    <ul class="list-inline">
+                       <li ng-repeat="book in books[type.key].data">
+                            <div class="book-box">
+                                <div class="img">
+                                    <a href="#" title="Title-Book"><img src="{{book.image}}" title="{{book.title}}">
+                                        <h4 class="title">
+                                            <a  href="#" title="{{book.image}}" ng-bind="book.title"></a>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <p class="author" ng-bind="book.author"></p>
+                                <p class="rating" ng-bind="book.rating"></p>
+                                <div class="cost" ng-bind="book.cost"></div>
+                                <div class="btn-add">
+                                    <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                        <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Content -->
         </div>
         <!-- footer -->
         <footer id="footer" class="row">
@@ -122,17 +248,5 @@
     </div>
 
 </div>
-
-<script src="https://use.fontawesome.com/89763e860b.js"></script>
-<script src="../bower_components/jquery/dist/jquery.min.js"></script>
-<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../bower_components/angular/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
-<script src="../bower_components/firebase/firebase.js"></script>
-<script src="../bower_components/angularfire/dist/angularfire.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
-<script src="scripts/app.js"></script>
-
 </body>
 </html>
