@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to H-Book</title>
+
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/book-detail.css">
+    <link rel="stylesheet" href="styles/checkout-cart.css">
+    <link rel="stylesheet" href="styles/home.css">
+
+
+ <!-- Luong -->
+	 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+      <!-- Firebase -->
+      <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+
+      <!-- Angular -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+
+      <!-- AngularFire -->
+      <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.js"></script>
+
+      <!-- Custom JS -->
+      <script src="scripts/login.js"></script>
+
+      <!-- Bootstrap -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="styles/login.css">
+
+ <!-- end Luong -->
+</head>
+<body>
+<div id="h-guest" data-ng-app="hidrobook">
+    <div class="container" ng-controller="controlerapp">
+        <!-- Header -->
+		<!-- Luong -->
+	<div ng-app="app" ng-controller="AuthCtrl">>
+		<div>
+  <ul class="nav navbar-nav navbar-right" ng-hide="authData">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+        <ul id="login-dp" class="dropdown-menu">
+          <li>
+             <div class="row">
+                <div class="col-md-12">
+                  Login via
+                  <div class="social-buttons">
+                    <a href="#" ng-click="loginF()" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                    <a href="#" ng-click="loginG()"  class="btn btn-tw"><i class="fa fa-twitter"></i> Google</a>
+                  </div>
+                                  or
+                   <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                      <div class="form-group">
+                         <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                         <input type="email" class="form-control" ng-model="email1" id="login-email" placeholder="Email address" required>
+                      </div>
+                      <div class="form-group">
+                         <label class="sr-only" for="exampleInputPassword2">Password</label>
+                         <input type="password" class="form-control"  ng-model="password1" id="login-pass" placeholder="Password" required>
+                                               <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+                      </div>
+                      <div class="form-group">
+                         <button type="submit" ng-click="authWithPassword()" class="btn btn-primary btn-block" id="login-btn">Sign in</button>
+                      </div>
+                   </form>
+                </div>
+                <div class="bottom text-center">
+
+                  New here ? <a href="/register.html"><b>Join Us</b></a>
+                </div>
+             </div>
+          </li>
+        </ul>
+          </li>
+        </ul>
+  </div>
+
+    <!-- Reg Form -->
+
+  <div>
+        <ul class="nav navbar-nav navbar-right" ng-hide="authData">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Register</b> <span class="caret"></span></a>
+        <ul id="login-dp" class="dropdown-menu">
+          <li>
+             <div class="row">
+                <div class="col-md-12">
+                
+                                
+                   <form class="form" role="form" method="post" action="regis" accept-charset="UTF-8" id="regis-nav">
+                      <div class="form-group">
+                         <label class="sr-only" for="exampleInputEmail3">Email address</label>
+                         <input type="email" class="form-control" ng-model="email" id="reg-email" placeholder="Email address" required>
+                      </div>
+                      <div class="form-group">
+                         <label class="sr-only" for="exampleInputPassword3">Password</label>
+                         <input type="password" class="form-control"  ng-model="password" id="reg-pass" placeholder="Password" required>
+                      </div>
+                      <div class="form-group">
+                         <button type="submit" ng-click="createUser()" class="btn btn-primary btn-block" id="reg-btn">Sign up</button>
+                      </div>
+                   </form>
+                </div>
+                <div class="bottom text-center">
+                  Hydro Register
+                </div>
+             </div>
+          </li>
+        </ul>
+          </li>
+        </ul>
+      </div>
+
+	<div ng-show="authData">
+      <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Logged as</b> <span class="caret"></span></a>
+        <ul id="login-dp" class="dropdown-menu">
+          <li>
+             <div class="row">
+                <div class="col-md-12">
+                <img ng-src="{{ authData.facebook.profileImageURL }}"/>
+                <img ng-src="{{ authData.google.profileImageURL }}"/>
+                <br>
+                 <p>
+                  {{ authData.facebook.displayName}}
+                  {{ authData.google.displayName}}
+                </p>
+                </div>
+             </div>
+             <div class="bottom text-center">
+                  <button ng-click="logout()">Logout</button>
+                </div>
+          </li>
+        </ul>
+          </li>
+        </ul>
+        </div>
+</div>
+
+	  <!-- END Luong -->
+        <div id="header" class="row">
+            <div class="col-md-3 pull-left">
+                <h1 id="logo"><a href="javascript:void(0)"><img src="images/logo.png"></a></h1>
+            </div>
+
+            <div class="col-md-9">
+                <img id="professor" src="images/professor.png">
+                <div class="pull-right" id="shop-cart">
+                    <a href="#checkout/cart"><img src="images/shopcart.png">SHOPING: now in your cart 0 items</a>
+                </div>
+                <ul class="list-inline nav navbar" id="menu">
+                    <ul class="list-inline nav navbar-nav">
+                        <li class="active"><a href="#home" >Home</a></li>
+                        <li><a href="#">Search</a></li>
+                        <li><a href="#">Books</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#admin">Admin</a></li>
+                    </ul>
+                </ul>
+                <div id="search" class="pull-right">
+                    <input id="keyword" type="text" name="txtsearch" placeholder="Nhập tên sách" ng-model="searchbook">
+                    <input type="button" class="btn btn-primary" value="Search" ng-click="btnsearch()">
+                </div>
+            </div>
+        </div>
+           <!-- chức năng search book -->
+        <div id="search-container" class="row" ng-show="issearchbook">
+                <h3>Kết quả tìm kiếm</h3>
+                <ul class="list-inline">
+                    <li ng-repeat="book in filterallBook(books)| filter:searchbook">
+                        <div class="book-box">
+                            <div class="img">
+                                <a href="#" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
+                                    <h4 class="title">
+                                        <a  href="#" title="{{book.image}}" ng-bind="book.title"></a>
+                                    </h4>
+                                </a>
+                            </div>
+                            <p class="author" ng-bind="book.author"></p>
+                            <p class="rating" ng-bind="book.rating"></p>
+                            <div class="cost" ng-bind="book.cost"></div>
+                            <div class="btn-add">
+                                <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                    <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                    Thêm vào giỏ hàng
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        <!--nội dung Content -->
+        <div id="content" class="row" ng-show="!issearchbook" ng-view>
+        </div>
+        <!-- footer -->
+        <footer id="footer" class="row">
+            <div class="col-md-4">
+                <h3>Hidro <span>Team</span></h3>
+                <!--p class="footer-links">
+                    <a href="#">Home</a>
+                    ·
+                    <a href="#">Blog</a>
+                    ·
+                    <a href="#">Pricing</a>
+                    ·
+                    <a href="#">About</a>
+                    ·
+                    <a href="#">Faq</a>
+                    ·
+                    <a href="#">Contact</a>
+                </p>-->
+                <p class="footer-company-name">HidroTeam &copy; 2015</p>
+            </div>
+            <div class="col-md-4 pull-left">
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>227 Nguyen Van Cu</span> HoChiMinh, VietNam</p>
+                </div>
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p>+84 972678420</p>
+                </div>
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a href="mailto:support@h2team.com">support@h2team.com</a></p>
+                </div>
+            </div>
+            <div class="col-md-4 pull-right">
+                <p class="footer-company-about">
+                    <span>About the company</span>
+                    Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                </p>
+                <div class="footer-icons">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+        </footer>
+        <!-- end-foother -->
+    </div>
+
+</div>
+
+<script src="https://use.fontawesome.com/89763e860b.js"></script>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+<script src="../bower_components/firebase/firebase.js"></script>
+<script src="../bower_components/angularfire/dist/angularfire.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+<script src="scripts/app.js"></script>
+
+</body>
+</html>
