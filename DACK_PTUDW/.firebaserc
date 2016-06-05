@@ -1,6 +1,0 @@
-{
-  "projects": {
-    "staging": "hydrologin",
-    "default": "hydrologin"
-  }
-}
