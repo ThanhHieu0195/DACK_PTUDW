@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a315876c-9453-4785-a3f4-c409784fd461" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/app.js" afterPath="$PROJECT_DIR$/app/scripts/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/book-detail.css" afterPath="$PROJECT_DIR$/app/styles/book-detail.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/checkout-cart.css" afterPath="$PROJECT_DIR$/app/styles/checkout-cart.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/home.css" afterPath="$PROJECT_DIR$/app/styles/home.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/styles.css" afterPath="$PROJECT_DIR$/app/styles/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin.html" afterPath="$PROJECT_DIR$/app/views/admin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/book-detail.html" afterPath="$PROJECT_DIR$/app/views/book-detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/checkout-cart.html" afterPath="$PROJECT_DIR$/app/views/checkout-cart.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home.html" afterPath="$PROJECT_DIR$/app/views/home.html" />
     </list>
     <ignored path="DACK_PTUDW.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +26,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
+            <state relative-caret-position="102">
+              <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -426,12 +416,12 @@
       <workItem from="1464959704900" duration="14049000" />
       <workItem from="1464974655547" duration="3000" />
       <workItem from="1464974661190" duration="2512000" />
-      <workItem from="1465314725875" duration="386000" />
+      <workItem from="1465314725875" duration="811000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108827000" />
+    <option name="totallyTimeSpent" value="109252000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="8" width="1370" height="744" extended-state="0" />
@@ -823,8 +813,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
+        <state relative-caret-position="102">
+          <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
           <folding />
         </state>
       </provider>
