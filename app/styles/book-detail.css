@@ -94,7 +94,7 @@
 }
 
 #book-detail #cost-detail .exists{
-    background-image: url('../images/tick.png');
+
     border-radius: 0px;
     background-repeat: no-repeat;
     background-position-x: 60px;

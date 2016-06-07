@@ -1,20 +1,20 @@
-<div id="book-detail">
-    <div id="book-cover" class="pull-left"><img src="https://vcdn.tikicdn.com/cache/w232/media/catalog/product/i/m/img396.u335.d20160530.t084719.jpg"></div>
+<div id="book-detail" ng-controller="b-detailController">
+    <div id="book-cover" class="pull-left"><img ng-src="{{book.image}}"></div>
     <div id="more-detail">
         <div id="description" class="pull-left">
-            <div class="title fa fa-book" aria-hidden="true">&nbsp;&nbsp;<a href="/sach-phat-trien-ban-than/sach-hoc-lam-nguoi/25-thuat-dac-nhan-tam.html" title="25 Thuật Đắc Nhân Tâm">25 Thuật Đắc Nhân Tâm</a></div>
-            <div class="item">Tác giả: </div>
-            <div class="item">Nhà xuất bản: </div>
+            <div class="title fa fa-book" aria-hidden="true">&nbsp;&nbsp;<a href="#book-detail/{{book.id}}/{{book.title}}" title="25 Thuật Đắc Nhân Tâm">{{book.title}}</a></div>
+            <div class="item">Tác giả: {{book.author}}</div>
+            <div class="item">Nhà xuất bản:  </div>
             <div class="item">Đơn vị phát hành: </div>
-            <div class="item">Ngày xuất bản: </div>
+            <div class="item">Ngày xuất bản: {{book.date}} </div>
             <div><span>Rất nhiểu tình huống có thể xảy ra trong mối quan hệ giữa người bán hàng và khách hàng. Người bán hàng giỏi là người biết giải quyết các mối quan hệ đó một cách suôn sẻ nhất, khiến khách hàng hài lòng mà vẫn đem lại lợi nhuận cho mình</span></div>
         </div>
         <div id="cost-detail" class="pull-left">
             <dl>
                 <dd class="title">Thông tin thanh toán</dd>
-                <dd class="cost">Giá Bán: <span>99,000</span>   </dd>
+                <dd class="cost">Giá Bán: <span>{{book.cost}}</span>   </dd>
                 <!-- Giá sản phẩm -->
-                <dd class="exists">Còn hàng</dd><!-- Còn hàng/hết hàng -->
+                <dd class="exists" ng-style="{'background-image': status}">{{stt}}</dd><!-- Còn hàng/hết hàng -->
             </dl>
             <button class="btn btn-primary">Thêm Vào Giỏ Hàng</button>
         </div>

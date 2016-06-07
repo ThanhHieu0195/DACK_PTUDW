@@ -38,7 +38,7 @@
                 <li ng-repeat="book in filterBookquery(filterallBook(books), 'new')">
                     <div class="book-box">
                         <div class="img">
-                            <a href="#" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
+                            <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
                                 <h4 class="title">
                                     <a  href="#" title="{{book.image}}" ng-bind="book.title"></a>
                                 </h4>
@@ -63,7 +63,7 @@
                 <li ng-repeat="book in filterBookquery(filterallBook(books), 'max')">
                     <div class="book-box">
                         <div class="img">
-                            <a href="#" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
+                            <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
                                 <h4 class="title">
                                     <a  href="#" title="{{book.image}}" ng-bind="book.title"></a>
                                 </h4>
@@ -88,7 +88,7 @@
                 <li ng-repeat="book in books[type.key].data">
                     <div class="book-box">
                         <div class="img">
-                            <a href="#" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
+                            <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
                                 <h4 class="title">
                                     <a  href="#" title="{{book.image}}" ng-bind="book.title"></a>
                                 </h4>
