@@ -50,7 +50,6 @@
 
 #checkout-cart #cur-genere h5{
     font-weight: bold;
-    margin-left: 20px;
     border-bottom: 1px #e7e7e7 solid;
     width: 100%;
     padding: 10px 5px;
@@ -58,7 +57,7 @@
 }
 
 #checkout-cart #cur-genere{
-    padding: 20px 0px 0px 5px
+    padding: 20px 0px 0px 20px;
 }
 
 #checkout-cart .total{
