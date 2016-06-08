@@ -40,7 +40,7 @@
                         <div class="img">
                             <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
                                 <h4 class="title">
-                                    <a  href="#" title="{{book.image}}" ng-bind="book.title"></a>
+                                    <a  href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" ng-click="btnsearch(true)" title="{{book.image}}" ng-bind="book.title"></a>
                                 </h4>
                             </a>
                         </div>
@@ -48,7 +48,7 @@
                         <p class="rating" ng-bind="book.rating"></p>
                         <div class="cost" ng-bind="book.cost"></div>
                         <div class="btn-add">
-                            <button  type="button"  class="btn btn-large btn-block btn-default add-to-cart">
+                            <button ng-click="addBook2Cart(book)" class="btn btn-large btn-block btn-default add-to-cart">
                                 <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
                                 Thêm vào giỏ hàng
                             </button>
@@ -65,7 +65,7 @@
                         <div class="img">
                             <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
                                 <h4 class="title">
-                                    <a  href="#" title="{{book.image}}" ng-bind="book.title"></a>
+                                    <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" ng-click="btnsearch(true)" title="{{book.image}}" ng-bind="book.title"></a>
                                 </h4>
                             </a>
                         </div>
@@ -73,7 +73,7 @@
                         <p class="rating" ng-bind="book.rating"></p>
                         <div class="cost" ng-bind="book.cost"></div>
                         <div class="btn-add">
-                            <button  type="button"  class="btn btn-large btn-block btn-default add-to-cart">
+                            <button ng-click="addBook2Cart(book)" class="btn btn-large btn-block btn-default add-to-cart">
                                 <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
                                 Thêm vào giỏ hàng
                             </button>
@@ -90,7 +90,7 @@
                         <div class="img">
                             <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
                                 <h4 class="title">
-                                    <a  href="#" title="{{book.image}}" ng-bind="book.title"></a>
+                                    <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" ng-click="btnsearch(true)" title="{{book.image}}" ng-bind="book.title"></a>
                                 </h4>
                             </a>
                         </div>
@@ -98,7 +98,7 @@
                         <p class="rating" ng-bind="book.rating"></p>
                         <div class="cost" ng-bind="book.cost"></div>
                         <div class="btn-add">
-                            <button  type="button"  class="btn btn-large btn-block btn-default add-to-cart">
+                            <button ng-click="addBook2Cart(book)" class="btn btn-large btn-block btn-default add-to-cart">
                                 <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
                                 Thêm vào giỏ hàng
                             </button>

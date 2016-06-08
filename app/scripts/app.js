@@ -2,39 +2,45 @@
 var app = angular.module('hidrobook', ['ui.bootstrap', 'ngRoute', 'firebase']);
 
 app.factory('bookService', ['$firebaseObject', function ($firebaseArray) {
-    var ref = new Firebase("https://hidrobook.firebaseio.com/");
-    data = $firebaseArray(ref);
-    return data;
-}]);
-
-app.controller('b-detailController', function ($scope, bookService,$routeParams) {
-    var bookId = $routeParams.id;
-    $scope.data = bookService;
-
-    $scope.data.$loaded(function () {
-        var getAllBook = function (data) {
-
+    return {
+        initData: function () {
+            var ref = new Firebase("https://hidrobook.firebaseio.com/")
+            data = $firebaseArray(ref);
+            return data;
+        },
+        getAllBook: function(data) {
             var genres = data.types;
-
             var books=[];
             for(var i = 0; i < genres.length; i++){
-                for(var j = 0; j < data.books[genres[i].key].data.length; j++){
-                    console.log(i);
+                var num;
+                try{
+                    num = data.books[genres[i].key].data.length
+                }catch(Ex){
+                    num = 0;
+                }
+                for(var j = 0; j < num; j++){
                     books.push(data.books[data.types[i].key].data[j]);
                 }
             }
             return books;
-        };
-
-        var getBookByID = function (books, id) {
-            for(var k = 0; k < books.length; k++){
-                if(books[k].id == id)
-                    return books[k];
+        },
+        getBookByID: function (books, id) {
+            for(var i = 0; i < books.length; i++){
+                if(books[i].id == id)
+                    return books[i];
             }
-        };
+        }
+    };
+}]);
 
-        var books = getAllBook($scope.data);
-        window.db = $scope.book = getBookByID(books, bookId);
+app.controller('b-detailController', function ($scope, bookService,$routeParams) {
+    var bookId = $routeParams.id;
+    $scope.data = bookService.initData();
+
+    $scope.data.$loaded(function () {
+
+        var books = bookService.getAllBook($scope.data);
+        $scope.book = bookService.getBookByID(books, bookId);
 
         if($scope.book.number > 0) {
             $scope.stt = "Còn hàng";
@@ -68,8 +74,44 @@ app.controller('adminapp', function($scope){
     };
 });
 
-app.controller('controlerapp', function($scope, $firebaseObject){
+app.controller('controlerapp', function($scope, $firebaseObject, bookService){
     var ref = new Firebase("https://hidrobook.firebaseio.com/");
+
+    //book cart //
+    $scope.cart = [];
+    $scope.addBook2Cart = function (book) {
+        var check = true; //book not exists
+        for(var i = 0; i < $scope.cart.length; i++){
+            if($scope.cart[i].id == book.id) {
+                check = false;
+                $scope.cart[i].number++;
+                break;
+            }
+        }
+        if(check){
+            var item = new Object();
+            item.title = book.title;
+            item.author = book.author;
+            item.image = book.image;
+            item.cost = parseFloat(book.cost) * 1000;
+            item.number = 1;
+            item.id = book.id;
+            $scope.cart.push(item);
+        }
+    };
+
+    $scope.deleteBookCart = function (index){
+        $scope.cart.splice(index, 1);
+    };
+
+    $scope.total = function () {
+        var total = 0;
+        for(var i = 0; i < $scope.cart.length; i++){
+            total += $scope.cart[i].cost *  $scope.cart[i].number;
+        }
+        return total;
+    };
+    //end book cart
 
     $scope.data = $firebaseObject(ref);
      $scope.data.$loaded()
@@ -147,8 +189,7 @@ app.controller('controlerapp', function($scope, $firebaseObject){
 
                 return booksnew;
             };
-                       
-         })
+                })
             .catch(function(err) {
               console.error(err);
             });
@@ -163,7 +204,7 @@ app.controller('controlerapp', function($scope, $firebaseObject){
         str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
         str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
         str = str.replace(/đ/g, "d");
-        //str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|_/g,"-");
+        str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|_/g,"");
         /* tìm và thay thế các kí tự đặc biệt trong chuỗi sang kí tự - */
         //str= str.replace(/-+-/g,"-"); //thay thế 2- thành 1-
         str = str.replace(/^\-+|\-+$/g, "");
@@ -172,6 +213,7 @@ app.controller('controlerapp', function($scope, $firebaseObject){
         str = str.toLowerCase();
         return str;
     };
+
 });
 
  app.controller('CarouselCtrl', function($scope, $firebaseObject) {

@@ -30,7 +30,7 @@
             <div class="col-md-9">
                 <img id="professor" src="images/professor.png">
                 <div class="pull-right" id="shop-cart">
-                    <a href="#checkout/cart"><img src="images/shopcart.png">SHOPING: now in your cart 0 items</a>
+                    <a href="#checkout/cart"><img src="images/shopcart.png">SHOPING: now in your cart {{cart.length}} items</a>
                 </div>
                 <ul class="list-inline nav navbar" id="menu" >
                     <ul class="list-inline nav navbar-nav">
@@ -56,7 +56,7 @@
                             <div class="img">
                                 <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" ng-click="btnsearch(true)" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
                                     <h4 class="title">
-                                        <a  href="#" title="{{book.image}}" ng-bind="book.title"></a>
+                                        <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" ng-click="btnsearch(true)" title="{{book.image}}" ng-bind="book.title"></a>
                                     </h4>
                                 </a>
                             </div>
@@ -64,7 +64,7 @@
                             <p class="rating" ng-bind="book.rating"></p>
                             <div class="cost" ng-bind="book.cost"></div>
                             <div class="btn-add">
-                                <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
+                                <button ng-click="addBook2Cart(book)" class="btn btn-large btn-block btn-default add-to-cart">
                                     <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
                                     Thêm vào giỏ hàng
                                 </button>

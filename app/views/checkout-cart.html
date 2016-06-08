@@ -4,62 +4,28 @@
             <div class="row product">
                 <div class="col-md-6">
                     <h5>Sản phẩm trong giỏ hàng</h5>
-                    <span class="badge">3</span>
+                    <span class="badge">{{cart.length}}</span>
                 </div>
                 <div class="col-md-2">Giá mua</div>
                 <div class="col-md-2">Số lượng</div>
                 <div class="col-md-2">Thành tiền</div>
             </div>
-            <div class="row product">
+            <div class="row product" ng-repeat="book in cart">
                 <div class="col-md-6 container">
                     <div class="row">
                         <div class="col-md-5">
-                            <img class="img-responsive" src="https://vcdn.tikicdn.com/cache/200x280/media/catalog/product/s/c/screenshot_23_3.jpg">
+                            <img class="img-responsive" ng-src="{{book.image}}">
                         </div>
                         <div class="col-md-7">
-                            <div class="title"><a href="http://tiki.vn/nha-gia-kim.html?ref=c316.c393.c839.c3130.c3259.c4968.c5270.c5374.c531.c840.c2546.c2766.c3133.c3326.c3327.c3370.c3452.c4291.c4699.c4970.c5103.c5297.c5376.c5571.c2288.c2494.c2793.c3141.c3328.c3535.c4981.c5177.c5236.c5807.c5980.c3503.c5572." target="_blank">Nhà Giả Kim - Bí Mật Của Nicholas Flamel Bất Tử</a></div>
-                            <div class="b-item">Tác giả: <a href="#">Michael Scott</a></div>
-                            <div class="b-item"><a href="javascript:void(0);" class="btn btn-link btn-item-delete">Xóa</a> </div>
+                            <div class="title"><a href="#">{{book.title}}</a></div>
+                            <div class="b-item">Tác giả: <a href="#">{{book.author}}</a></div>
+                            <div class="b-item"><a href="javascript:void(0);" ng-click="deleteBookCart(index)" class="btn btn-link btn-item-delete">Xóa</a> </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2 cost">49,000 đ</div>
-                <div class="col-md-2"><input class="form-control" type="number" value="1" min="0" style="width: 90%"></div>
-                <div class="col-md-2">49,000 đ</div>
-            </div>
-            <div class="row product">
-                <div class="col-md-6 container">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <img class="img-responsive" src="https://vcdn.tikicdn.com/cache/200x280/media/catalog/product/s/c/screenshot_23_3.jpg">
-                        </div>
-                        <div class="col-md-7">
-                            <div class="title"><a href="http://tiki.vn/nha-gia-kim.html?ref=c316.c393.c839.c3130.c3259.c4968.c5270.c5374.c531.c840.c2546.c2766.c3133.c3326.c3327.c3370.c3452.c4291.c4699.c4970.c5103.c5297.c5376.c5571.c2288.c2494.c2793.c3141.c3328.c3535.c4981.c5177.c5236.c5807.c5980.c3503.c5572." target="_blank">Nhà Giả Kim - Bí Mật Của Nicholas Flamel Bất Tử</a></div>
-                            <div class="b-item">Tác giả: <a href="#">Michael Scott</a></div>
-                            <div class="b-item"><a href="javascript:void(0);" class="btn btn-link btn-item-delete">Xóa</a> </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2 cost">49,000 đ</div>
-                <div class="col-md-2"><input class="form-control" type="number" value="1" min="0" style="width: 90%"></div>
-                <div class="col-md-2">49,000 đ</div>
-            </div>
-            <div class="row product">
-                <div class="col-md-6 container">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <img class="img-responsive" src="https://vcdn.tikicdn.com/cache/200x280/media/catalog/product/s/c/screenshot_23_3.jpg">
-                        </div>
-                        <div class="col-md-7">
-                            <div class="title"><a href="http://tiki.vn/nha-gia-kim.html?ref=c316.c393.c839.c3130.c3259.c4968.c5270.c5374.c531.c840.c2546.c2766.c3133.c3326.c3327.c3370.c3452.c4291.c4699.c4970.c5103.c5297.c5376.c5571.c2288.c2494.c2793.c3141.c3328.c3535.c4981.c5177.c5236.c5807.c5980.c3503.c5572." target="_blank">Nhà Giả Kim - Bí Mật Của Nicholas Flamel Bất Tử</a></div>
-                            <div class="b-item">Tác giả: <a href="#">Michael Scott</a></div>
-                            <div class="b-item"><a href="javascript:void(0);" class="btn btn-link btn-item-delete">Xóa</a> </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2 cost">49,000 đ</div>
-                <div class="col-md-2"><input class="form-control" type="number" value="1" min="0" style="width: 90%"></div>
-                <div class="col-md-2">49,000 đ</div>
+                <div class="col-md-2 cost">{{book.cost}} đ</div>
+                <div class="col-md-2"><input class="form-control" type="number" value="1" min="0" style="width: 90%" ng-model="book.number" ></div>
+                <div class="col-md-2 cost">{{book.cost * book.number}} đ</div>
             </div>
 
             <div style="margin-top: -5px; margin-left: 10px">
@@ -69,7 +35,7 @@
         <div id="bill" class="col-md-4">
             <div class="total">
                 <span class="title">Thành tiền: </span>
-                <span class="item">40,000 đ</span>
+                <span class="item">{{total()}} đ</span>
             </div>
             <h5>Thông tin nhận hàng</h5>
             <form id="to" class="form-group">
