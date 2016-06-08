@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a315876c-9453-4785-a3f4-c409784fd461" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/app.js" afterPath="$PROJECT_DIR$/app/scripts/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/book-detail.html" afterPath="$PROJECT_DIR$/app/views/book-detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/checkout-cart.html" afterPath="$PROJECT_DIR$/app/views/checkout-cart.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home.html" afterPath="$PROJECT_DIR$/app/views/home.html" />
     </list>
     <ignored path="DACK_PTUDW.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,17 +73,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="93" column="38" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
+            <state relative-caret-position="85">
+              <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
               <folding>
-                <element signature="e#4169#4235#0" expanded="false" />
-                <element signature="e#4357#4413#0" expanded="false" />
-                <element signature="e#4500#4884#0" expanded="false" />
-                <element signature="e#4997#6780#0" expanded="false" />
-                <element signature="e#6834#6883#0" expanded="false" />
+                <element signature="e#199#1119#0" expanded="false" />
+                <element signature="e#1237#1743#0" expanded="false" />
+                <element signature="e#1790#2768#0" expanded="false" />
+                <element signature="e#2849#7823#0" expanded="false" />
+                <element signature="e#4202#4268#0" expanded="false" />
+                <element signature="e#4390#4446#0" expanded="false" />
+                <element signature="e#4533#4917#0" expanded="false" />
+                <element signature="e#5030#6813#0" expanded="false" />
+                <element signature="e#6867#6916#0" expanded="false" />
+                <element signature="e#7893#8382#0" expanded="false" />
+                <element signature="e#8515#8999#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -104,7 +105,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="checkout-cart.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="checkout-cart.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/checkout-cart.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
@@ -172,8 +173,8 @@
         <option value="$PROJECT_DIR$/app/views/book-detail.html" />
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/views/home.html" />
-        <option value="$PROJECT_DIR$/app/scripts/app.js" />
         <option value="$PROJECT_DIR$/app/views/checkout-cart.html" />
+        <option value="$PROJECT_DIR$/app/scripts/app.js" />
       </list>
     </option>
   </component>
@@ -453,12 +454,12 @@
       <workItem from="1464959704900" duration="14049000" />
       <workItem from="1464974655547" duration="3000" />
       <workItem from="1464974661190" duration="2512000" />
-      <workItem from="1465314725875" duration="12438000" />
+      <workItem from="1465314725875" duration="13793000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120879000" />
+    <option name="totallyTimeSpent" value="122234000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="8" width="1370" height="744" extended-state="0" />
@@ -551,11 +552,17 @@
         <state relative-caret-position="1836">
           <caret line="108" column="27" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="27" />
           <folding>
-            <element signature="e#4169#4235#0" expanded="false" />
-            <element signature="e#4357#4413#0" expanded="false" />
-            <element signature="e#4500#4884#0" expanded="false" />
-            <element signature="e#4997#6780#0" expanded="false" />
-            <element signature="e#6834#6883#0" expanded="false" />
+            <element signature="e#199#1119#0" expanded="false" />
+            <element signature="e#1237#1743#0" expanded="false" />
+            <element signature="e#1790#2768#0" expanded="false" />
+            <element signature="e#2849#7823#0" expanded="false" />
+            <element signature="e#4202#4268#0" expanded="false" />
+            <element signature="e#4390#4446#0" expanded="false" />
+            <element signature="e#4533#4917#0" expanded="false" />
+            <element signature="e#5030#6813#0" expanded="false" />
+            <element signature="e#6867#6916#0" expanded="false" />
+            <element signature="e#7893#8382#0" expanded="false" />
+            <element signature="e#8515#8999#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -829,20 +836,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="93" column="38" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
-          <folding>
-            <element signature="e#4169#4235#0" expanded="false" />
-            <element signature="e#4357#4413#0" expanded="false" />
-            <element signature="e#4500#4884#0" expanded="false" />
-            <element signature="e#4997#6780#0" expanded="false" />
-            <element signature="e#6834#6883#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/checkout-cart.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -855,6 +848,26 @@
             <element signature="n#li#2;n#ul#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
             <element signature="n#li#3;n#ul#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
             <element signature="n#li#4;n#ul#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+          <folding>
+            <element signature="e#199#1119#0" expanded="false" />
+            <element signature="e#1237#1743#0" expanded="false" />
+            <element signature="e#1790#2768#0" expanded="false" />
+            <element signature="e#2849#7823#0" expanded="false" />
+            <element signature="e#4202#4268#0" expanded="false" />
+            <element signature="e#4390#4446#0" expanded="false" />
+            <element signature="e#4533#4917#0" expanded="false" />
+            <element signature="e#5030#6813#0" expanded="false" />
+            <element signature="e#6867#6916#0" expanded="false" />
+            <element signature="e#7893#8382#0" expanded="false" />
+            <element signature="e#8515#8999#0" expanded="false" />
           </folding>
         </state>
       </provider>

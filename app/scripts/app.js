@@ -33,6 +33,8 @@ app.factory('bookService', ['$firebaseObject', function ($firebaseArray) {
     };
 }]);
 
+app.factory('authService', [])
+
 app.controller('b-detailController', function ($scope, bookService,$routeParams) {
     var bookId = $routeParams.id;
     $scope.data = bookService.initData();
@@ -149,6 +151,7 @@ app.controller('controlerapp', function($scope, $firebaseObject, bookService){
             item.id = book.id;
             $scope.cart.push(item);
         }
+
     };
 
     $scope.deleteBookCart = function (index){
