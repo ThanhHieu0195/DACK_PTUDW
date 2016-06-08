@@ -1,0 +1,291 @@
+
+.row{
+	margin: 0px!important;
+}
+
+#h-guest{
+	background-color: #9d9d9d;
+	color: #000;
+	padding-top: 10px;
+}
+
+#h-guest #header #logo{
+	box-shadow: -15px 10px 10px #888888;
+	z-index: 10;
+}
+
+#h-guest #header #professor{
+	position: absolute;
+	margin-top: 65px;
+	margin-left: -75px;
+}
+
+#h-guest #header .col-md-9{
+	background-image: url("../images/bg-header.jpg");
+	background-repeat: no-repeat;
+}
+
+
+#h-guest #menu{
+	margin-top: 50px;
+	margin-left: 40px;
+	min-width: 700px;
+}
+
+#h-guest #menu a{
+	color: #000;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#h-guest #menu li:focus{
+	background: red;
+}
+
+#h-guest a:hover{
+	text-decoration: none;
+}
+
+#h-guest a:focus{
+	text-decoration: none;
+}
+
+#h-guest #search{
+	margin-top: -20px;
+	padding: 9px;
+}
+
+#h-guest #keyword{
+	width: 180px;
+}
+
+#h-guest #header{
+	background-color: #e9e8e3;
+	margin-top: 20px;
+	font-size: 18px;
+	border-width: 1px;
+	box-shadow: 10px 10px 5px #888888;
+	min-width: 800px!important;
+}
+
+#h-guest #shop-cart{
+	margin-top: -5px;
+	background-image: url("../images/bg-shopcart.png");
+	height: 45px;
+	width: 260px;
+	font-size: 11px;
+}
+
+#h-guest #header .list-inline li{
+	padding-right: 30px;
+}
+
+#h-guest #search-container{
+	background-color: #fff;
+	margin:0px -15px ;
+	padding-left: 10px;
+	padding-bottom: 10px;
+}
+
+
+#h-guest #content{
+	margin-top: 5px;
+}
+
+h3{
+	text-transform: uppercase;
+}
+
+#h-guest #search-container h3{
+	padding: 20px 20px 10px 20px;
+	color: #626060;
+	font-size: 18px;
+	font-weight: bold;
+	border-bottom: 1px #c4bebc solid;
+}
+
+#h-guest #v-header{
+	margin-top: 10px;
+	background-color: #626060;
+}
+
+#h-guest #v-menu h1{
+	font-size: 17px;
+	font-weight: bold;
+}
+
+#h-guest #v-menu{
+	/*position: fixed;
+    top: 178px;
+    margin-left: -15px;*/
+}
+
+#h-guest .list-group li{
+	background-color: #f2f2f2!important;
+	text-align: center;
+}
+
+#h-guest .list-group li:hover{
+	background-color: #000!important;
+	color: #fff;
+}
+
+#h-guest .list-group li:focus{
+	background-color: #000!important;
+	color: #fff;
+}
+
+#h-guest #content #slide div{
+	width: 100%;
+}
+#h-guest #content #slide img{
+	height: 100%;
+	width: 100%;
+}
+#h-guest #book{
+	background-color: #fff;
+	margin-top: 10px;
+}
+
+
+#h-guest #content #slide {
+	max-width: 900px;
+	left:50%;
+	top:20px;
+	margin: 5px auto;
+	display: block;
+	padding-bottom: 30px;
+}
+
+
+/*Footer*/
+
+#footer {
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	font: bold 16px sans-serif;
+	padding: 30px 50px;
+	text-align: left;
+}
+
+/* Footer left */
+
+/* The company logo */
+
+#footer h3{
+	color:  #ffffff;
+	font: normal 36px 'Cookie', cursive;
+	margin: 0;
+}
+
+#footer h3 span{
+	color:  #5383d3;
+}
+
+/* Footer links */
+
+#footer .footer-links{
+	color:  #ffffff;
+	margin: 20px 0 12px;
+	padding: 0;
+}
+
+#footer .footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+	text-decoration: none;
+	color:  inherit;
+}
+
+#footer .footer-company-name{
+	color:  #8f9296;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+}
+
+/* Footer Center */
+
+#footer i{
+	background-color:  #33383b;
+	color: #ffffff;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 15px;
+	vertical-align: middle;
+}
+
+#footer i.fa-envelope{
+	font-size: 17px;
+	line-height: 38px;
+}
+
+#footer p{
+	display: inline-block;
+	color: #ffffff;
+	vertical-align: middle;
+	margin:0;
+}
+
+#footer p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
+
+#footer p a{
+	color:  #5383d3;
+	text-decoration: none;;
+}
+
+
+/* Footer Right */
+
+
+.footer .footer-company-about{
+	line-height: 20px;
+	color:  #92999f;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+
+#footer .footer-company-about span{
+	display: block;
+	color:  #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.footer .footer-icons{
+	margin-top: 25px;
+}
+
+.footer .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+
+/*Admin*/
+#v-addbook #v-updatebook{
+	padding-top: 10px;
+}
