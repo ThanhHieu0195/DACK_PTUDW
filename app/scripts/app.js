@@ -301,8 +301,6 @@ app.controller('controlerapp', function($scope, $firebaseObject, bookService){
 
 app.controller('loginController', function ($scope, authService) {
     $scope.user = new Object();
-    $scope.user.email = "qhuy94@gmail.com";
-    $scope.user.pass = "123456";
 
     //login with email and password
     $scope.loginWithPassword = function (user) {
@@ -388,7 +386,7 @@ app.controller('loginController', function ($scope, authService) {
         });
     };
 
-    window.db = $scope.loginWithGithub = function () {
+    $scope.loginWithGithub = function () {
         authService.$authWithOAuthPopup("github",function () {
         }).then(function (authData) {
             $scope.notif = "Login successfully";
@@ -400,7 +398,7 @@ app.controller('loginController', function ($scope, authService) {
     };
 
     //console.log(authService.$getAuth());
-    authService.$unauth();
+    //authService.$unauth();
 });
 
 
