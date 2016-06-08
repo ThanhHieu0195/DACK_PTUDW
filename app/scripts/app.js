@@ -53,26 +53,77 @@ app.controller('b-detailController', function ($scope, bookService,$routeParams)
     });
 });
 
-app.controller('adminapp', function($scope){
+app.controller('adminapp', function($scope, $firebaseArray){
     $scope.book = {title:"null",author:"null", number:"null", date:"null", rating:"null", image:"null", cost:"null", type:""};
+
+    // $scope.defaultBook = {title:"null",author:"null", number:"null", date:"null", rating:"null", image:"null", cost:"null", type:""};
+
     $scope.contentBook = ["title", "author", "number", "date", "rating", "image", "cost", "type"];
-    $scope.addBook = function(type){
-          var refbook = new Firebase("https://hidrobook.firebaseio.com/").child('books').child(type).child('data').push().set({
-                    "title":$scope.book['title'],
-                    "author":$scope.book['author'],
-                    "number":$scope.book['number'],
-                    "date":$scope.book['date'],
-                    "rating":$scope.book['rating'],
-                    "image":$scope.book['image'],
-                    "cost":$scope.book['cost']
-          });
-    }; 
+
+    $scope.addBook = function(){
+          var refbook = new Firebase("https://hidrobook.firebaseio.com/").child('books').child($scope.book.type).child('data').push($scope.book);
+      };
+
+    $scope.deleteBook = function(filterbook, key){
+
+        var refbook = new Firebase("https://hidrobook.firebaseio.com/").child('books').child(filterbook.type).child('data');
+        var datas = $firebaseArray(refbook);
+       datas.$loaded()
+        .then(function(){
+            angular.forEach(datas, function(data, key) {
+                if(data.title==filterbook.title){
+                    datas.$remove(key);
+                }
+            })
+         });
+     };
+
+     $scope.updateBook = function(book){
+         var refbook = new Firebase("https://hidrobook.firebaseio.com/").child('books').child(book.type).child('data');
+        var datas = $firebaseArray(refbook);
+        datas.$loaded()
+        .then(function(){
+             angular.forEach($scope.contentBook, function(type, key){
+                datas[$scope.indexBookinType][type]=book[type];
+             })
+            
+            datas.$save($scope.indexBookinType).then(function(ref) {
+              ref.key() === datas[$scope.indexBookinType].$id; // true
+            });
+         });
+     };
+     $scope.indexBookinType=0;
+
+     $scope.changeContentbook=function(filterbook){
+        $scope.book = filterbook;
+
+        var refbook = new Firebase("https://hidrobook.firebaseio.com/").child('books').child(filterbook.type).child('data');
+        var datas = $firebaseArray(refbook);
+         datas.$loaded()
+        .then(function(){
+            angular.forEach(datas, function(data, key) {
+                if(data.title==filterbook.title){
+                    $scope.indexBookinType=key;
+                }
+            })
+            console.log($scope.indexBookinType);
+         });
+         
+
+     };
+
+
     $scope.flag = {add:false, delete:false, update:false};
+
     $scope.turnflag = function(key){
+        // $scope.book = $scope.defaultBook;
         $scope.flag['add']=$scope.flag['delete']=$scope.flag['update']=false;
        $scope.flag[key]=true;
     };
+
+
 });
+
 
 app.controller('controlerapp', function($scope, $firebaseObject, bookService){
     var ref = new Firebase("https://hidrobook.firebaseio.com/");

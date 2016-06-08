@@ -14,20 +14,50 @@
             <div class="col-md-5" ng-bind="content"></div>
             <div class="col-md-5"><input type="text" name="" ng-model="book[content]"></div>
         </div>
-        <input type="button" name="SET" value="SET" ng-click="addBook('KT')">
+        <input type="button" name="SET" value="SET" ng-click="addBook()">
     </div>
+
+    <!-- delete books -->
     <div id = "v-deletebook" class="clearfix col-md-4 col-md-offset-4" ng-show="flag['delete']">
-        <div class="row" ng-repeat="content in contentBook">
-            <div class="col-md-5" ng-bind="content"></div>
-            <div class="col-md-5"><input type="text" name="" ng-model="book[content]"></div>
+     
+        <div class="row">
+            <div class="col-md-5" ng-bind="contentBook[0]">
+            </div>
+            <div class="col-md-5">
+                <input type="text" name="" ng-model="searchdel">
+                  <div ng-repeat = "(key, filterbook) in filterallBook(books) | filter:searchdel">
+                <h5><a href="" ng-bind="filterbook.title"  ng-dblclick="deleteBook(filterbook, key)"></a></h5>
+            </div>
+            </div>
         </div>
-        <input type="button" name="SET" value="SET" ng-click="addBook('KT')">
+       
     </div>
-    <div id = "v-updatebook" class="clearfix col-md-4 col-md-offset-4" ng-show="flag['update']">
-        <div class="row" ng-repeat="content in contentBook">
-            <div class="col-md-5" ng-bind="content"></div>
-            <div class="col-md-5"><input type="text" name="" ng-model="book[content]"></div>
+
+    <!--  -->
+     <div id = "v-updatebook" class="clearfix col-md-6 col-md-offset-3" ng-show="flag['update']">
+     
+        <div class="row">
+            <div class="col-md-1" ng-bind="contentBook[0]">
+            </div>
+
+            <div class="col-md-6">
+                <input type="text" name="" ng-model="searchupdate">
+                  <div ng-repeat = "filterbook in filterallBook(books) | filter:searchupdate">
+                       <h5><a href="" ng-bind="filterbook.title"  ng-click="changeContentbook(filterbook)"></a></h5>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="row" ng-repeat="content in contentBook">
+                    <div class="col-md-5" ng-bind="content">
+                     </div>
+                    <div class="col-md-5">
+                        <input type="text" name="" ng-model="book[content]">
+                    </div>                    
+                </div>
+                  <input type="button" name="SET" value="SET" ng-click="updateBook(book)">
+            </div>
         </div>
-        <input type="button" name="SET" value="SET" ng-click="addBook('KT')">
+       
     </div>
 </div>
