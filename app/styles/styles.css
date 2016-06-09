@@ -3,64 +3,63 @@
 	margin: 0px!important;
 }
 
-#h-guest{
+#page-top {
 	/*background-color: #9d9d9d;*/
 	color: #000;
-	padding-top: 10px;
 	background-image: url("http://static2.zamba.vn/thumb_max/ebx/2015/03/19/901633/14267347285453398404.jpg");
 }
 
-#h-guest #header #logo{
+#page-top #header #logo{
 	box-shadow: -15px 10px 10px #888888;
 	z-index: 10;
 }
 
-#h-guest #header #professor{
+#page-top #header #professor{
 	position: absolute;
 	margin-top: 65px;
 	margin-left: -75px;
 }
 
-#h-guest #header .col-md-9{
+#page-top #header .col-md-9{
 	background-image: url("../images/bg-header.jpg");
 	background-repeat: no-repeat;
 }
 
 
-#h-guest #menu{
+#page-top #menu{
 	margin-top: 50px;
 	margin-left: 40px;
 	min-width: 700px;
 }
 
-#h-guest #menu a{
+#page-top #menu a{
 	color: #000;
 	font-weight: bold;
 	font-size: 20px;
 }
 
-#h-guest #menu li:focus{
+#page-top #menu li:focus{
 	background: red;
 }
 
-#h-guest a:hover{
+#page-top a:hover{
 	text-decoration: none;
 }
 
-#h-guest a:focus{
+#page-top a:focus{
 	text-decoration: none;
 }
 
-#h-guest #search{
+#page-top #search{
 	margin-top: -20px;
 	padding: 9px;
 }
 
-#h-guest #keyword{
+#page-top #keyword{
 	width: 180px;
 }
 
-#h-guest #header{
+#page-top #header{
 	background-color: #e9e8e3;
 	margin-top: 20px;
 	font-size: 18px;
@@ -69,19 +68,18 @@
 	min-width: 800px!important;
 }
 
-#h-guest #shop-cart{
-	margin-top: -5px;
-	background-image: url("../images/bg-shopcart.png");
-	height: 45px;
-	width: 260px;
+#page-top #shop-cart{
+	padding-left: 10px;
+	height: 20px;
+	width: 240px;
 	font-size: 11px;
 }
 
-#h-guest #header .list-inline li{
+#page-top #header .list-inline li{
 	padding-right: 30px;
 }
 
-#h-guest #search-container{
+#page-top #search-container{
 	background-color: #fff;
 	margin:0px -15px ;
 	padding-left: 10px;
@@ -89,15 +87,16 @@
 }
 
 
-#h-guest #content{
-	margin-top: 5px;
+#page-top #content{
+	max-width: 1000px;
+	margin: 0 auto!important;
 }
 
 h3{
 	text-transform: uppercase;
 }
 
-#h-guest #search-container h3{
+#page-top #search-container h3{
 	padding: 20px 20px 10px 20px;
 	color: #626060;
 	font-size: 18px;
@@ -105,51 +104,51 @@ h3{
 	border-bottom: 1px #c4bebc solid;
 }
 
-#h-guest #v-header{
+#page-top #v-header{
 	margin-top: 10px;
 	background-color: #626060;
 }
 
-#h-guest #v-menu h1{
+#page-top #v-menu h1{
 	font-size: 17px;
 	font-weight: bold;
 }
 
-#h-guest #v-menu{
+#page-top #v-menu{
 	/*position: fixed;
     top: 178px;
     margin-left: -15px;*/
 }
 
-#h-guest .list-group li{
+#page-top .list-group li{
 	background-color: #f2f2f2!important;
 	text-align: center;
 }
 
-#h-guest .list-group li:hover{
+#page-top .list-group li:hover{
 	background-color: #000!important;
 	color: #fff;
 }
 
-#h-guest .list-group li:focus{
+#page-top .list-group li:focus{
 	background-color: #000!important;
 	color: #fff;
 }
 
-#h-guest #content #slide div{
+#page-top #content #slide div{
 	width: 100%;
 }
-#h-guest #content #slide img{
+#page-top #content #slide img{
 	height: 100%;
 	width: 100%;
 }
-#h-guest #book{
+#page-top #book{
 	background-color: #fff;
 	margin-top: 10px;
 }
 
 
-#h-guest #content #slide {
+#page-top #content #slide {
 	max-width: 900px;
 	left:50%;
 	top:20px;

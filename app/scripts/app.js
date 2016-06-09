@@ -1,11 +1,12 @@
-//angular.module('myApp', ['ui.bootstrap']);
+'use strict';
+
 var app = angular.module('hidrobook', ['ui.bootstrap', 'ngRoute', 'firebase', 'ngAnimate']);
 
 app.factory('bookService', ['$firebaseObject', function ($firebaseArray) {
     return {
         initData: function () {
-            var ref = new Firebase("https://hidrobook.firebaseio.com/")
-            data = $firebaseArray(ref);
+            var ref = new Firebase("https://hidrobook.firebaseio.com/");
+            var data = $firebaseArray(ref);
             return data;
         },
         getAllBook: function(data) {
@@ -33,7 +34,12 @@ app.factory('bookService', ['$firebaseObject', function ($firebaseArray) {
     };
 }]);
 
-app.controller('b-detailController', function ($scope, bookService,$routeParams) {
+app.factory("authService", ["$firebaseAuth", function($firebaseAuth) {
+    var ref = new Firebase("https://hidrobook.firebaseio.com/");
+    return $firebaseAuth(ref);
+}]);
+
+app.controller('detailController', function ($scope, bookService,$routeParams) {
     var bookId = $routeParams.id;
     $scope.data = bookService.initData();
 
@@ -122,8 +128,9 @@ app.controller('adminapp', function($scope, $firebaseArray, $firebaseObject){
 });
 
 
-app.controller('controlerapp', function($scope, $firebaseObject, bookService){
+app.controller('controlerapp', function($scope, $firebaseObject, authService){
     var ref = new Firebase("https://hidrobook.firebaseio.com/");
+    $scope.curUser = authService.$getAuth();
 
     //book cart //
     $scope.cart = [];
@@ -160,6 +167,14 @@ app.controller('controlerapp', function($scope, $firebaseObject, bookService){
         return total;
     };
     //end book cart
+
+
+    //logout
+    $scope.logout = function () {
+        authService.$unauth();
+        location.reload();
+    };
+    //end logout
 
     $scope.data = $firebaseObject(ref);
      $scope.data.$loaded()
@@ -270,7 +285,7 @@ app.controller('controlerapp', function($scope, $firebaseObject, bookService){
 
  app.controller('CarouselCtrl', function($scope, $firebaseObject) {
          var ref = new Firebase("https://hidrobook.firebaseio.com/");
-         $scope.data = $firebaseObject(ref);
+        $scope.data = $firebaseObject(ref);
 
          $scope.data.$loaded()
                 .then(function() {
@@ -288,16 +303,141 @@ app.controller('controlerapp', function($scope, $firebaseObject, bookService){
 // Controller Ends here
 
 
+app.controller('loginController', function ($scope, authService) {
+    $scope.user = new Object();
+
+    //login with email and password
+    $scope.loginWithPassword = function (user) {
+        authService.$authWithPassword({
+            email: user.email,
+            password: user.pass
+        }).then(function () {
+            //Success callback
+            $scope.notif = "";
+            console.log('Login successful');
+            location.reload();
+        }, function (error) {
+            //Failure callback
+            switch(error.code){
+                case "INVALID_EMAIL":
+                    $scope.notif = "The specified user account email is invalid.";
+                    break;
+                case "INVALID_PASSWORD":
+                    $scope.notif = "The specified user account password is incorrect";
+                    break;
+                case "INVALID_USER":
+                    $scope.notif = "The specified user account does not exist.";
+                    break;
+                default:
+                    $scope.notif = "Error logging user in:" + error;
+            }
+            console.log('Login failure');
+        });
+        $scope.auth = authService;
+        $scope.user = $scope.auth.$getAuth();
+    };
+
+    //create account
+    $scope.createAccount = function (user) {
+        authService.$createUser({
+            email: user.email,
+            password: user.pass
+        }).then(function () {
+            //Success callback
+            $scope.notif = "Create user successful!";
+
+            console.log('Create user successful');
+            //location.reload();
+        }, function (error) {
+            //Failure callback
+            $scope.notif = "Error create user in:" + error;
+            console.log('Create user failure');
+        });
+    };
+
+    //reset password
+    $scope.resetPassword = function (user) {
+        authService.$resetPassword({
+            email: user.email
+        }).then(function () {
+            $scope.notif = "Email changed successfully";
+            console.log("Email changed successfully");
+        }, function (error) {
+            $scope.notif = "Error changing email: " + error;
+            console.log("Error changing email:", error);
+        });
+    };
+
+    $scope.loginWithFacebook = function () {
+        authService.$authWithOAuthPopup("facebook",  function() {
+        }).then(function (authData) {
+            $scope.notif = "Login successfully";
+            console.log("Login successfully", authData);
+        }, function (error) {
+            $scope.notif = "Error login with facebook: " + error;
+            console.log("Error login with facebook:", error);
+        });
+    };
+
+    $scope.loginWithGoogle = function () {
+        authService.$authWithOAuthPopup("google", function () {
+        }).then(function (authData) {
+            $scope.notif = "Login successfully";
+            console.log("Login successfully", authData);
+        }, function (error) {
+            $scope.notif = "Error login with google: " + error;
+            console.log("Error login with google:", error);
+        });
+    };
+
+    $scope.loginWithGithub = function () {
+        authService.$authWithOAuthPopup("github",function () {
+        }).then(function (authData) {
+            $scope.notif = "Login successfully";
+            console.log("Login successfully", authData);
+        }, function (error) {
+            $scope.notif = "Error login with github: " + error;
+            console.log("Error login with github:", error);
+        });
+    };
+
+
+    if(authService.$getAuth() != null) {
+        console.log(authService.$getAuth());
+        top.location = '/DACK_PTUDW/app/index.html#/home';
+    }
+});
+
+
+app.controller('adminController', function ($scope, authService) {
+    if(authService.$getAuth() == null || (authService.$getAuth() != null && authService.$getAuth().password.email !=  'qhuy94@gmail.com')){
+        top.location = '/DACK_PTUDW/app/index.html#/home';
+    }
+});
+
+app.controller('cartController', function ($scope, authService) {
+    if(authService.$getAuth() == null)
+        top.location = '/DACK_PTUDW/app/index.html#/login';
+})
+
+
 app.config(["$routeProvider", "$locationProvider", function($routeProvider) {
     $routeProvider.when("/home", {
         templateUrl: "views/home.html", //accessing a certain html page that was created within views
     }).when("/book-detail/:id/:title", {
         // the rest is the same for ui-router and ngRoute...
         templateUrl: "views/book-detail.html",
-        controller: 'b-detailController'
+        controller: 'detailController'
     }).when("/admin", {
         templateUrl: "views/admin.html",
+        controller: 'adminController'
     }).when("/checkout/cart", {
         templateUrl: "views/checkout-cart.html",
+        controller: 'cartController'
+    }).when("/login",{
+        templateUrl: "views/login.html",
+        controller: 'loginController'
+    }).otherwise({
+        redirectTo: '/home',
     });
 }]);
