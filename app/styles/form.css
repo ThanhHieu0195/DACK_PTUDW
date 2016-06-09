@@ -1,15 +1,21 @@
- #v-addbook, #v-deletebook{
+ #v-addbook{
 	margin: 15px 150px;
 	padding: 10px 130px;
 	text-align: center;
     width: 500px;
-    background-image: url('http://2.bp.blogspot.com/-MEkIz1Bld0c/T_4oRfvREPI/AAAAAAAAA8k/wZHwb6kUPlw/s1600/blank+book+cover.jpg');
+    background-image: url('http://www.timelinecoverbanner.com/facebook-covers/wood-bark.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-
     box-shadow: inset 0 0 5px 2px #282a2d;
 }
-
+#v-deletebook{
+	margin: 15px 150px;
+	padding: 10px 130px;
+	text-align: center;
+    width: 500px;
+    box-shadow: inset 0 0 5px 2px #282a2d;
+    background-image: url('http://www.timelinecoverbanner.com/facebook-covers/wood-bark.jpg');
+}
  #v-addbook label{
  	float: left;
     color: black;
@@ -21,7 +27,6 @@
 	margin: 100px 10px 10px 10px;
 }
 #v-addbook img, #v-deletebook img{
-	float:right;
 	width: 50px;
 	height: 50px;
 }
@@ -31,7 +36,7 @@
 }
 
 #v-addbook .form-group{
-	padding:10px 10px;
+	padding 10px 10px;
 }
 
 .btnset{
@@ -49,4 +54,31 @@
 
 #v-deletebook a{
 	color: black;
+}
+
+/*search*/
+#v-updatebook{
+	margin-top: 15px;
+    background-image: url('http://www.timelinecoverbanner.com/facebook-covers/wood-bark.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+    box-shadow: inset 0 0 5px 2px #282a2d;
+}
+
+.updatesearch{
+	padding: 10px 10px;
+}
+
+.updateview{
+	
+	padding: 50px 20px 20px 150px;
+
+}
+.updateview h3{
+	font-weight: bold;
+	padding-left: 30px;
+}
+.updateview img{
+	width: 50px;
+	height: 50px;
 }

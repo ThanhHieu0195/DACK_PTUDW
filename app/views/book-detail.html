@@ -1,4 +1,4 @@
-<div id="book-detail">
+<div id="book-detail" ng-controller="b-detailController">
     <div id="book-cover" class="pull-left"><img ng-src="{{book.image}}"></div>
     <div id="more-detail">
         <div id="description" class="pull-left">
@@ -16,7 +16,7 @@
                 <!-- Giá sản phẩm -->
                 <dd class="exists" ng-style="{'background-image': status}">{{stt}}</dd><!-- Còn hàng/hết hàng -->
             </dl>
-            <button ng-click="addBook2Cart(book)" class="btn btn-primary">Thêm Vào Giỏ Hàng</button>
+            <button class="btn btn-primary">Thêm Vào Giỏ Hàng</button>
         </div>
     </div>
     <div class="clearfix"></div>
@@ -37,7 +37,7 @@
                     <p class="rating">****</p>
                     <div class="cost">70,000đ</div>
                     <div class="btn-add">
-                        <button ng-click="addBook2Cart(book)" class="btn btn-large btn-block btn-default add-to-cart">
+                        <button data-sku="8935235208544" data-title="Nước Mỹ, Nước Mỹ Và Những Truyện Ngắn Mới" data-price="56000" data-src="" type="button" data-product-type="simple" class="btn btn-large btn-block btn-default add-to-cart" data-id="208503">
                             <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
                             Thêm vào giỏ hàng
                         </button>

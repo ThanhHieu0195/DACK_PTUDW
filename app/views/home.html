@@ -1,10 +1,24 @@
 <div id="user-home" class="row">
     <!-- category -->
-
+    <div id="v-menu" class="col-md-2">
+        <div id="v-header" class="list-group-item"><h1>Danh Mục Sách</h1></div>
+        <ul class="list-group">
+            <li class="list-group-item"><a href="" ng-click="opentag('new')">Sản phẩm mới</a></li>
+            <li class="list-group-item"><a href="" ng-click="opentag('common')">Sách bán chạy</a></li>
+            <li class="list-group-item"><a href="" ng-click="opentag('KT')">Sách Kinh Tế</a></li>
+            <li class="list-group-item"><a href="" ng-click="opentag('VH')">Sách Văn Học - Tiểu Thuyết</a></li>
+            <li class="list-group-item"><a href="" ng-click="opentag('NN')">Sách Học Ngoại Ngữ</a></li>
+            <li class="list-group-item"><a href="">Sách Thiếu Nhi</a></li>
+            <li class="list-group-item"><a href="">Sách Phát Triển Bản Thân</a></li>
+            <li class="list-group-item"><a href="">Sách Truyện Thiếu Nhi</a></li>
+            <li class="list-group-item"><a href="">Truyện Tranh, Manga, Comic</a></li>
+            <li class="list-group-item"><a href="">Sách Kĩ Năng</a></li>
+        </ul>
+    </div>
     <!-- Slider and Book -->
-    <div id="book" class="col-md-12">
+    <div id="book" class="col-md-10 pull-right">
         <!--Slider -->
-        <div id="slide" data-ng-controller="CarouselCtrl">
+        <div id="slide" data-ng-controller="CarouselCtrl" ng-show="flagsectionhome['banner']">
             <div>
                 <carousel interval="myInterval">
                     <slide ng-repeat="slide in slides" active="slide.active">
@@ -16,12 +30,37 @@
                 </carousel>
             </div>
         </div>
-
-        <!-- New Product -->
-        <div id="new-product">
-            <h3>SẢN PHẨM MỚI</h3>
+           <!-- chức năng search book -->
+        <div id="search-container" class="row" ng-show="flagsectionhome['search']">
+                <h3>Kết quả tìm kiếm</h3>
+                <ul class="list-inline">
+                    <li class="rotate-in" ng-repeat="book in filterallBook(books)| filter:searchbook" ng-if="$index<4*maxitem">
+                        <div class="book-box">
+                            <div class="img">
+                                <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" ng-click="btnsearch(true)" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
+                                    <h4 class="title">
+                                        <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" ng-click="btnsearch(true)" title="{{book.image}}" ng-bind="book.title"></a>
+                                    </h4>
+                                </a>
+                            </div>
+                            <p class="author" ng-bind="book.author"></p>
+                            <p class="rating" ng-bind="book.rating"></p>
+                            <div class="cost" ng-bind="book.cost"></div>
+                            <div class="btn-add">
+                                <button ng-click="addBook2Cart(book)" class="btn btn-large btn-block btn-default add-to-cart">
+                                    <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                    Thêm vào giỏ hàng
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+        <div id="all-book" ng-show="flagsectionhome['allbook']">
+            <h3>Tất cả sách</h3>
             <ul class="list-inline">
-                <li class="rotate-in" ng-repeat="book in filterBookquery(filterallBook(books), 'new')">
+                <li class="rotate-in" ng-repeat="book in filterallBook(books)" ng-if="$index<maxitem">
                     <div class="book-box">
                         <div class="img">
                             <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
@@ -43,10 +82,38 @@
                 </li>
             </ul>
         </div>
-        <div id="sale-product">
+
+
+        <!-- New Product -->
+        <div id="new-product" ng-show="flagsectionhome['new']">
+            <h3>SẢN PHẨM MỚI</h3>
+            <ul class="list-inline">
+                <li class="rotate-in" ng-repeat="book in filterBookquery(filterallBook(books), 'new')" ng-if="$index<maxitem">
+                    <div class="book-box">
+                        <div class="img">
+                            <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
+                                <h4 class="title">
+                                    <a  href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" ng-click="btnsearch(true)" title="{{book.image}}" ng-bind="book.title"></a>
+                                </h4>
+                            </a>
+                        </div>
+                        <p class="author" ng-bind="book.author"></p>
+                        <p class="rating" ng-bind="book.rating"></p>
+                        <div class="cost" ng-bind="book.cost"></div>
+                        <div class="btn-add">
+                            <button ng-click="addBook2Cart(book)" class="btn btn-large btn-block btn-default add-to-cart">
+                                <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                Thêm vào giỏ hàng
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="sale-product" ng-show="flagsectionhome['common']">
             <h3>SẢN PHẨM BÁN CHẠY</h3>
             <ul class="list-inline">
-                <li class="rotate-in" ng-repeat="book in filterBookquery(filterallBook(books), 'max')">
+                <li class="rotate-in" ng-repeat="book in filterBookquery(filterallBook(books), 'max')" ng-if="$index<maxitem">
                     <div class="book-box">
                         <div class="img">
                             <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
@@ -68,10 +135,10 @@
                 </li>
             </ul>
         </div>
-        <div id="{{type.key}}" ng-repeat="type in types">
+        <div id="{{type.key}}" ng-repeat="type in types" ng-show="flagsectionhome[type.key]">
             <h3 ng-bind="books[type.key].name"></h3>
             <ul class="list-inline">
-                <li class="rotate-in" class="animate-repeat" ng-repeat="book in books[type.key].data">
+                <li class="rotate-in" class="animate-repeat" ng-repeat="book in books[type.key].data" ng-if="$index<maxitem">
                     <div class="book-box">
                         <div class="img">
                             <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">

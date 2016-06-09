@@ -1,206 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="UTF-8">
+    <title>Welcome to H-Book</title>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/book-detail.css">
     <link rel="stylesheet" href="styles/checkout-cart.css">
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/form.css">
-    <link rel="stylesheet" href="styles/login.css">
-
-    <!-- Bootstrap Core CSS -->
-    <link href="styles/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="styles/agency.css" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <style type="text/css">
-        .navbar-shrink #logo{display: none}
-        .navbar-shrink #name{display: none!important;}
-    </style>
-
 </head>
-
-<body id="page-top" class="index" ng-app="hidrobook" ng-controller="controlerapp">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top" id="name" style="display: block">H-BOOKSTORE</a>
-                <br/>
-                <div style="display: block" class="pull-left">
-                    <div class="dropdown" id="drop-menu" style="display: inline">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Danh Mục Sách
-                            <span class="caret"></span></button>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-                            <li role="presentation" class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                            <li role="presentation" class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                            <li role="presentation" class="divider"></li>
-                        </ul>
-                    </div>
-                    <input type="text" class="form-control" style="width:250px!important; display: inline">
-                    <input type="button" class="btn btn-primary" value="Tìm" style="width:80px; display: inline">
-                </div>
+<body>
+<div id="h-guest" data-ng-app="hidrobook">
+    <div class="container" ng-controller="controlerapp">
+        <!-- Header -->
+        <div id="header" class="row">
+            <div class="col-md-3 pull-left">
+                <h1 id="logo"><a href="javascript:void(0)"><img src="images/logo.png"></a></h1>
             </div>
 
-            <ul class="pull-right list-inline" id="shop-cart">
-                <li id="user-bar">
-                    <div ng-hide="curUser"><a href="#login"><span class="fa fa-sign-in" style="font-size: 25px;" aria-hidden="true"></span>Đăng Nhập</a></div>
-                    <div ng-show="curUser">
-                        <div class="dropdown">
-                            <a class="dropdown-toggle" href="javascript:void(0)" type="button" data-toggle="dropdown">
-                                <ul class="list-inline">
-                                    <li><img ng-src="{{curUser.password.profileImageURL}}" width="25" height="25"/></li>
-                                    <li><div>{{curUser.password.email}}</div></li>
-                                </ul>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="javascript:void(0)" ng-click="logout()">Đăng xuất</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li><a href="#checkout/cart"><span class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 30px"></span><span class="badge">{{cart.length}}</span></a></li>
-            </ul>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#home">Home</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#search">Search</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#books">Book</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" ng-show="curUser.password.email == 'qhuy94@gmail.com'" href="#admin">Admin</a>
-                    </li>
+            <div class="col-md-9">
+                <img id="professor" src="images/professor.png">
+                <div class="pull-right" id="shop-cart">
+                    <a href="#checkout/cart"><img src="images/shopcart.png">SHOPING: now in your cart {{cart.length}} items</a>
+                </div>
+                <ul class="list-inline nav navbar" id="menu" >
+                    <ul class="list-inline nav navbar-nav">
+                        <li class="active"><a href="#home" ng-click = "changeflaghome(['banner', 'new', 'common', 'KT','NN','VH'],['search','allbook'])">Home</a></li>
+
+                        <li><a href="#search" ng-click = "changeflaghome(['search'],['banner', 'new', 'common', 'KT','NN','VH', 'allbook'])">Search</a></li>
+                        <li><a href="#books" ng-click = "changeflaghome(['allbook'],['banner', 'new', 'common', 'KT','NN','VH', 'search'])">Books</a></li>
+                        <li><a href="#" ng-click = "btnsearch(true)">Contact</a></li>
+                        <li><a href="#admin" ng-click = "btnsearch(true)">Admin</a></li>
+                    </ul>
                 </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <!-- Header -->
-    <header style="height: 250px">
-        <div class="container">
-        </div>
-    </header>
-
-    <div id="search-container" class="row" ng-show="issearchbook">
-        <h3>Kết quả tìm kiếm</h3>
-        <ul class="list-inline">
-            <li class="rotate-in" ng-repeat="book in filterallBook(books)| filter:searchbook">
-                <div class="book-box">
-                    <div class="img">
-                        <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" ng-click="btnsearch(true)" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
-                            <h4 class="title">
-                                <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" ng-click="btnsearch(true)" title="{{book.image}}" ng-bind="book.title"></a>
-                            </h4>
-                        </a>
-                    </div>
-                    <p class="author" ng-bind="book.author"></p>
-                    <p class="rating" ng-bind="book.rating"></p>
-                    <div class="cost" ng-bind="book.cost"></div>
-                    <div class="btn-add">
-                        <button ng-click="addBook2Cart(book)" class="btn btn-large btn-block btn-default add-to-cart">
-                            <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
-                            Thêm vào giỏ hàng
-                        </button>
-                    </div>
+                <div id="search" class="pull-right">
+                    <input id="keyword" type="text" name="txtsearch" placeholder="Nhập tên sách" ng-model="searchbook">
+                    <input type="button" class="btn btn-primary" value="Search" ng-click="changeflaghome(['search'],['banner', 'new', 'common', 'KT','NN','VH'])">
                 </div>
-            </li>
-        </ul>
+            </div>
+        </div>
+        <!--nội dung Content -->
+        <div id="content" class="row" ng-view>
+        </div>
+        <!-- footer -->
+        <footer id="footer" class="row">
+            <div class="col-md-4">
+                <h3>Hidro <span>Team</span></h3>
+                <!--p class="footer-links">
+                    <a href="#">Home</a>
+                    ·
+                    <a href="#">Blog</a>
+                    ·
+                    <a href="#">Pricing</a>
+                    ·
+                    <a href="#">About</a>
+                    ·
+                    <a href="#">Faq</a>
+                    ·
+                    <a href="#">Contact</a>
+                </p>-->
+                <p class="footer-company-name">HidroTeam &copy; 2015</p>
+            </div>
+            <div class="col-md-4 pull-left">
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>227 Nguyen Van Cu</span> HoChiMinh, VietNam</p>
+                </div>
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p>+84 972678420</p>
+                </div>
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a href="mailto:support@h2team.com">support@h2team.com</a></p>
+                </div>
+            </div>
+            <div class="col-md-4 pull-right">
+                <p class="footer-company-about">
+                    <span>About the company</span>
+                    Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                </p>
+                <div class="footer-icons">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+        </footer>
+        <!-- end-foother -->
     </div>
 
-    <!--nội dung Content -->
-    <div id="content" class="row" ng-show="!issearchbook" ng-view>
-    </div>
-    <!-- footer -->
-    <footer id="footer" class="row">
-        <div class="col-md-4">
-            <h3>Hidro <span>Team</span></h3>
-            <p class="footer-company-name">HidroTeam &copy; 2015</p>
-        </div>
-        <div class="col-md-4 pull-left">
-            <div>
-                <i class="fa fa-map-marker"></i>
-                <p><span>227 Nguyen Van Cu</span> HoChiMinh, VietNam</p>
-            </div>
-            <div>
-                <i class="fa fa-phone"></i>
-                <p>+84 972678420</p>
-            </div>
-            <div>
-                <i class="fa fa-envelope"></i>
-                <p><a href="mailto:support@h2team.com">support@h2team.com</a></p>
-            </div>
-        </div>
-        <div class="col-md-4 pull-right">
-            <p class="footer-company-about">
-                <span>About the company</span>
-                Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
-            </p>
-            <div class="footer-icons">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-github"></i></a>
-            </div>
-        </div>
-    </footer>
-    <!-- end-foother -->
-    </div>
-
-    </div>
-    <script src="https://use.fontawesome.com/89763e860b.js"></script>
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../bower_components/angular/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
-    <script src="../bower_components/firebase/firebase.js"></script>
-    <script src="../bower_components/angularfire/dist/angularfire.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
-    <script src="scripts/app.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+</div>
+<script src="https://use.fontawesome.com/89763e860b.js"></script>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+<script src="../bower_components/firebase/firebase.js"></script>
+<script src="../bower_components/angularfire/dist/angularfire.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+<script src="scripts/app.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
@@ -210,50 +114,6 @@
     <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
     <link rel="stylesheet" href="styles/animation.css">
 
-
-
-
-
-
-
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="js/classie.js"></script>
-    <script src="js/cbpAnimatedHeader.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/agency.js"></script>
-
-    <script src="https://use.fontawesome.com/89763e860b.js"></script>
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../bower_components/angular/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
-    <script src="../bower_components/firebase/firebase.js"></script>
-    <script src="../bower_components/angularfire/dist/angularfire.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
-    <script src="scripts/app.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
-
-    <!-- AngularJS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-    <!-- Firebase -->
-    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-    <!-- AngularFire -->
-    <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
-    <link rel="stylesheet" href="styles/animation.css">
 
 </body>
-
 </html>
