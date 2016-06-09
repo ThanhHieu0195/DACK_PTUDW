@@ -1,0 +1,52 @@
+ #v-addbook, #v-deletebook{
+	margin: 15px 150px;
+	padding: 10px 130px;
+	text-align: center;
+    width: 500px;
+    background-image: url('http://2.bp.blogspot.com/-MEkIz1Bld0c/T_4oRfvREPI/AAAAAAAAA8k/wZHwb6kUPlw/s1600/blank+book+cover.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    box-shadow: inset 0 0 5px 2px #282a2d;
+}
+
+ #v-addbook label{
+ 	float: left;
+    color: black;
+	text-transform: uppercase; 
+	text-shadow: 2px 2px 2px;
+}
+#v-addbook h3, #v-deletebook h3{
+	font-weight: bold;
+	margin: 100px 10px 10px 10px;
+}
+#v-addbook img, #v-deletebook img{
+	float:right;
+	width: 50px;
+	height: 50px;
+}
+
+#v-addbook input{
+	float: right;
+}
+
+#v-addbook .form-group{
+	padding 10px 10px;
+}
+
+.btnset{
+	margin: 20px 20px;
+	width: 200px;
+	text-align: center;
+	float: left;
+}
+
+#v-deletebook> input, .form-control{
+ 	font-size: 10px;
+    width: 240px;
+    text-align: center;
+}
+
+#v-deletebook a{
+	color: black;
+}

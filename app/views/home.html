@@ -1,0 +1,112 @@
+<div id="user-home" class="row">
+    <!-- category -->
+    <div id="v-menu" class="col-md-2">
+        <div id="v-header" class="list-group-item"><h1>Danh Mục Sách</h1></div>
+        <ul class="list-group">
+            <li class="list-group-item">Sản phẩm mới</li>
+            <li class="list-group-item">Sách bán chạy</li>
+            <li class="list-group-item">Sách Kinh Tế</li>
+            <li class="list-group-item">Sách Thiếu Nhi</li>
+            <li class="list-group-item">Sách Phát Triển Bản Thân</li>
+            <li class="list-group-item">Sách Văn Học - Tiểu Thuyết</li>
+            <li class="list-group-item">Sách Truyện Thiếu Nhi</li>
+            <li class="list-group-item">Truyện Tranh, Manga, Comic</li>
+            <li class="list-group-item">Sách Kĩ Năng</li>
+            <li class="list-group-item">Sách Học Ngoại Ngữ</li>
+        </ul>
+    </div>
+    <!-- Slider and Book -->
+    <div id="book" class="col-md-10 pull-right">
+        <!--Slider -->
+        <div id="slide" data-ng-controller="CarouselCtrl">
+            <div>
+                <carousel interval="myInterval">
+                    <slide ng-repeat="slide in slides" active="slide.active">
+                        <img ng-src="{{slide.image}}">
+                        <div class="carousel-caption">
+                            <!-- <h4>Slide {{$index+1}}</h4> -->
+                        </div>
+                    </slide>
+                </carousel>
+            </div>
+        </div>
+
+        <!-- New Product -->
+        <div id="new-product">
+            <h3>SẢN PHẨM MỚI</h3>
+            <ul class="list-inline">
+                <li class="rotate-in" ng-repeat="book in filterBookquery(filterallBook(books), 'new')">
+                    <div class="book-box">
+                        <div class="img">
+                            <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
+                                <h4 class="title">
+                                    <a  href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" ng-click="btnsearch(true)" title="{{book.image}}" ng-bind="book.title"></a>
+                                </h4>
+                            </a>
+                        </div>
+                        <p class="author" ng-bind="book.author"></p>
+                        <p class="rating" ng-bind="book.rating"></p>
+                        <div class="cost" ng-bind="book.cost"></div>
+                        <div class="btn-add">
+                            <button ng-click="addBook2Cart(book)" class="btn btn-large btn-block btn-default add-to-cart">
+                                <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                Thêm vào giỏ hàng
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="sale-product">
+            <h3>SẢN PHẨM BÁN CHẠY</h3>
+            <ul class="list-inline">
+                <li class="rotate-in" ng-repeat="book in filterBookquery(filterallBook(books), 'max')">
+                    <div class="book-box">
+                        <div class="img">
+                            <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
+                                <h4 class="title">
+                                    <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" ng-click="btnsearch(true)" title="{{book.image}}" ng-bind="book.title"></a>
+                                </h4>
+                            </a>
+                        </div>
+                        <p class="author" ng-bind="book.author"></p>
+                        <p class="rating" ng-bind="book.rating"></p>
+                        <div class="cost" ng-bind="book.cost"></div>
+                        <div class="btn-add">
+                            <button ng-click="addBook2Cart(book)" class="btn btn-large btn-block btn-default add-to-cart">
+                                <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                Thêm vào giỏ hàng
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="{{type.key}}" ng-repeat="type in types">
+            <h3 ng-bind="books[type.key].name"></h3>
+            <ul class="list-inline">
+                <li class="rotate-in" class="animate-repeat" ng-repeat="book in books[type.key].data">
+                    <div class="book-box">
+                        <div class="img">
+                            <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" title="Title-Book"><img ng-src="{{book.image}}" title="{{book.title}}">
+                                <h4 class="title">
+                                    <a href="#book-detail/{{book.id}}/{{normalizeString(book.title)}}" ng-click="btnsearch(true)" title="{{book.image}}" ng-bind="book.title"></a>
+                                </h4>
+                            </a>
+                        </div>
+                        <p class="author" ng-bind="book.author"></p>
+                        <p class="rating" ng-bind="book.rating"></p>
+                        <div class="cost" ng-bind="book.cost"></div>
+                        <div class="btn-add">
+                            <button ng-click="addBook2Cart(book)" class="btn btn-large btn-block btn-default add-to-cart">
+                                <img src="https://vcdn.tikicdn.com/assets/img/ico10.png" height="14" width="18" alt="">
+                                Thêm vào giỏ hàng
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Content -->
+</div>
