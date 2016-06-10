@@ -81,8 +81,17 @@ app.controller('adminapp', function($scope, $firebaseArray, $firebaseObject){
         $scope.datas = $firebaseArray($scope.refbook);
          $scope.datas.$loaded()
         .then(function(){
-           $scope.refbook.push($scope.book);
-           $scope.allbook.push($scope.book);
+           var x={};
+            x.title = $scope.book.title;
+            x.author = $scope.book.author;
+            x.cost = $scope.book.cost;
+            x.date = $scope.book.date;
+            x.image = $scope.book.image;
+            x.number = $scope.book.number;
+            x.rating = $scope.book.rating;
+
+           $scope.refbook.push(x);
+           $scope.allbook.push(x);
          });
       };
       
@@ -96,9 +105,11 @@ app.controller('adminapp', function($scope, $firebaseArray, $firebaseObject){
                 if(data.title==filterbook.title){
                     $scope.datas.$remove(key);
                     console.log($scope.allbook);
-
-                    $scope.allbook.splice(key+1, 1);
-
+                }
+            })
+             angular.forEach($scope.allbook, function(data, key) {
+                if(data.title==filterbook.title){
+                    $scope.allbook.splice(key, 1);
                 }
             })
          });
