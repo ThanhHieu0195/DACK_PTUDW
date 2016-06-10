@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="styles/checkout-cart.css">
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/form.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.0.0/bootstrap-social.min.css">
 </head>
 <body>
 <div id="h-guest" data-ng-app="hidrobook">
@@ -22,9 +24,27 @@
 
             <div class="col-md-9">
                 <img id="professor" src="images/professor.png">
-                <div class="pull-right" id="shop-cart">
-                    <a href="#checkout/cart"><img src="images/shopcart.png">SHOPING: now in your cart {{cart.length}} items</a>
-                </div>
+                <ul class="pull-right list-inline">
+                    <li id="user-bar">
+                        <div ng-hide="curUser"><a href="#login">Đăng Nhập</a></div>
+                        <div ng-show="curUser">
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" href="javascript:void(0)" type="button" data-toggle="dropdown">
+                                    <ul class="list-inline">
+                                        <li><img ng-src="{{curUser.image}}" width="25" height="25"/></li>
+                                        <li><div>{{curUser.name}}</div></li>
+                                    </ul>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="javascript:void(0)" ng-click="logout()">Đăng xuất</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="shop-cart">
+                        <a href="#checkout/cart"><img src="images/shopcart.png">SHOPING: now in your cart {{cart.length}} items</a>
+                    </li>
+                </ul>
                 <ul class="list-inline nav navbar" id="menu" >
                     <ul class="list-inline nav navbar-nav">
                         <li class="active"><a href="#home" ng-click = "changeflaghome(['banner', 'new', 'common', 'KT','NN','VH'],['search','allbook'])">Home</a></li>
@@ -32,7 +52,7 @@
                         <li><a href="#search" ng-click = "changeflaghome(['search'],['banner', 'new', 'common', 'KT','NN','VH', 'allbook'])">Search</a></li>
                         <li><a href="#books" ng-click = "changeflaghome(['allbook'],['banner', 'new', 'common', 'KT','NN','VH', 'search'])">Books</a></li>
                         <li><a href="#" ng-click = "btnsearch(true)">Contact</a></li>
-                        <li><a href="#admin" ng-click = "btnsearch(true)">Admin</a></li>
+                        <li><a  href="#admin" ng-show="curUser.name == 'qhuy94@gmail.com'" ng-click = "btnsearch(true)">Admin</a></li>
                     </ul>
                 </ul>
                 <div id="search" class="pull-right">

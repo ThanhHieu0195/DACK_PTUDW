@@ -1,0 +1,8 @@
+#login .col-md-6{
+    background-color: #fff!important;
+    padding: 6%;
+}
+
+#login .label p{
+    font-size: 20px;
+}

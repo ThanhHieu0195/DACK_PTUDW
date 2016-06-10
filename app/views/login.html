@@ -1,0 +1,53 @@
+<div id="login">
+    <div class="col-md-6">
+        <div class="label row"><p style="color: #0f0f0f">Register</p></div>
+        <form class="form-signin ng-pristine ng-valid ng-valid-email ng-valid-minlength" name="regForm">
+            <div class="form-group" ng-class="{ 'has-error' : regForm.email.$invalid }">
+                <label>Email</label>
+                <input type="email" name="regemail" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-email" ng-model="user.email">
+                <p class="help-block ng-hide" ng-show="regForm.regemail.$invalid">Enter a valid email.</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : regForm.password.$invalid }">
+                <label>Password</label>
+
+                <input type="password" name="regpassword" class="form-control ng-pristine ng-valid ng-empty ng-valid-minlength ng-touched" ng-model="user.pass" ng-minlength="6">
+                <p class="help-block ng-hide" ng-show="regForm.regpassword.$error.minlength">Min password length is 6 characters.</p>
+                <p style="color:red;" ng-show="regError" class="ng-binding ng-hide"></p>
+            </div>
+            <br>
+            <button ng-click="createAccount(user)" ladda-loading="register.loading" data-style="expand-right" type="button" ng-disabled="!user.email || !user.pass" class="btn btn-lg segoe-ui-light ladda-button btn-success btn-block" disabled="disabled"><span class="ladda-label">Register</span><span class="ladda-spinner"></span></button>
+            <p>{{notif}}</p>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div class="label row"><p style="color: #0f0f0f">Login</p></div>
+        <form class="form-signin ng-pristine ng-valid ng-valid-email ng-valid-minlength" name="signinForm" role="form">
+            <div class="form-group" ng-class="{ 'has-error' : signinForm.email.$invalid }">
+                <label>Email</label>
+                <input type="email" name="logemail" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-email" ng-model="user.email">
+                <p class="help-block ng-hide" ng-show="signinForm.logemail.$invalid">Enter a valid email.</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : signinForm.logpassword.$invalid }">
+                <label>Password</label>
+                <input type="password" name="logpassword" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-minlength" ng-model="user.pass" ng-minlength="6">
+                <p class="help-block ng-hide" ng-show="signinForm.logpassword.$error.minlength">Min password length is 6 characters.</p>
+                <p style="color:red;" ng-show="logError" class="ng-binding ng-hide"></p>
+            </div>
+            <br>
+            <button ng-click="loginWithPassword(user)" ladda-loading="login.loading" data-style="expand-right" ng-disabled="!user.email || !user.pass" type="button" class="btn btn-lg segoe-ui-light ladda-button btn-success btn-block" disabled="disabled"><span class="ladda-label">SignIn</span><span class="ladda-spinner"></span></button>
+            <p>{{notif}}</p>
+        </form>
+    </div>
+    <div class="col-md-12" style="background-color: #fff!important; padding: 3%">
+        <span style="font-weight: bold;">OR LOGIN WITH</span>
+        <a class="btn btn-block btn-social btn-facebook" ng-click="loginWithFacebook()" style="width: 300px; margin: 0 auto">
+            <span class="fa fa-facebook"></span> Sign in with Facebook
+        </a>
+        <a class="btn btn-block btn-social btn-google" ng-click="loginWithGoogle()" style="width: 300px; margin: 0 auto">
+            <span class="fa fa-google"></span> Sign in with Google
+        </a>
+        <a class="btn btn-block btn-social btn-github" ng-click="loginWithGithub()" style="width: 300px; margin: 0 auto">
+            <span class="fa fa-github"></span> Sign in with Github
+        </a>
+    </div>
+</div>
