@@ -178,20 +178,6 @@ app.controller('controlerapp', function($scope, $firebaseObject, authService){
     book.id = '1';
     book.number = '2';
 
-    /*var order = new Object();
-    order.name = "Đặng Bá Quang Huy";
-    order.mobile = "0972678420";
-    order.email = "qhuy94@gmai.com";
-    order.adress = "128b/16 Nguyễn Chí Thanh P5 Quận 10";
-    order.total = '100000';
-    order.value = [];
-    order.value.push(book);
-
-    var re = new Firebase("https://hidrobook.firebaseio.com/").child('orders');
-    var or = re.push();
-    or.set(order);*/
-
-
     $scope.logout = function () {
         authService.$unauth();
         location.reload();
@@ -250,6 +236,34 @@ app.controller('controlerapp', function($scope, $firebaseObject, authService){
         }
         return total;
     };
+    $scope.order = new Object();
+
+    $scope.Paypal = function () {
+
+        $scope.order.total = $scope.total();
+
+        if($scope.order.total == 0) {
+            window.alert("Giỏ hàng của bạn hiện đang trống");
+            return;
+        }
+
+        $scope.order.value = [];
+        for(var i = 0; i < $scope.cart.length; i++) {
+            var b = new Object();
+            b.id = $scope.cart[i].id;
+            b.title = $scope.cart[i].title;
+            b.number = $scope.cart[i].number;
+            $scope.order.value.push(b);
+        }
+
+        console.log($scope.order);
+        var ref = new Firebase("https://hidrobook.firebaseio.com/").child('orders');
+        var curOrder = ref.push();
+        curOrder.set($scope.order);
+        window.alert("Bạn đã đặt hàng thành công!");
+    };
+
+
     //end book cart
 
     $scope.data = $firebaseObject(ref);

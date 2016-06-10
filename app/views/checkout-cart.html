@@ -40,18 +40,18 @@
             <h5>Thông tin nhận hàng</h5>
             <form id="to" class="form-group">
                 <label>Họ tên </label>
-                <input type="text" name="full_name" class="form-control address" id="full_name" placeholder="Nhập họ tên" required="true">
+                <input type="text" name="full_name" class="form-control address" id="full_name" placeholder="Nhập họ tên" ng-model="order.name" required="true">
 
                 <label>Điện thoại </label>
-                <input type="tel" name="full_name" class="form-control address" id="tel" placeholder="Nhập số điện thoại" required="true">
+                <input type="tel" name="full_name" class="form-control address" id="tel" placeholder="Nhập số điện thoại" ng-model="order.mobile" required="true">
 
                 <label>Email </label>
-                <input type="email" name="full_name" class="form-control address" id="email" placeholder="Nhập địa chỉ email" required="true">
+                <input type="email" name="full_name" class="form-control address" id="email" placeholder="Nhập địa chỉ email" ng-model="order.email" required="true">
 
                 <label>Địa chỉ </label>
-                <input type="text" name="full_name" class="form-control address" id="address" placeholder="Nhập nơi nhận hàng" required="true">
+                <input type="text" name="full_name" class="form-control address" id="address" placeholder="Nhập nơi nhận hàng" ng-model="order.adress" required="true">
 
-                <button id="order" type="button" class="btn btn-large btn-block btn-default btn-checkout">
+                <button id="order" type="button" ng-click="Paypal()" class="btn btn-large btn-block btn-default btn-checkout">
                     ĐẶT HÀNG NGAY
                 </button>
             </form>
